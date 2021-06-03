@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>Giriş</title>
+        <title>ornek</title>
         <h:outputStylesheet library="css" name="bootstrap.css"/>
         <meta name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit-no"></meta> 
     </h:head>
@@ -18,17 +18,16 @@
                         <div class="card-body text-success">
                             <h:form class="form_container">
                                 <h:outputText value="E-mail :     "/>
-                                <h:inputText class="form-control" value="" a:placeholder="@iuc.edu.tr/@ogr.iuc.edu.tr"/>
+                                <h:inputText class="form-control" value=#{UserBean.username} a:placeholder="@iuc.edu.tr/@ogr.iuc.edu.tr"/>
                                 <br/>
                                 <br/>
                                 <h:outputText value="Password: "/>
-                                <h:inputSecret class="form-control" value="" a:placeholder="password"/>
+                                <h:inputSecret class="form-control" value=#{UserBean.password} a:placeholder="password"/>
                                 <h:commandButton class="btn btn-outline-success mt-3" value="giriş yap" action="ogrencipage"/>
                             </h:form>
                         </div>
                         <div class="card-footer bg-transparent border-success">
-                            <a href="#" style="color: #198754">Şifremi Unuttum</a>
-                            <h:link value = "Page 1" outcome = "ogrencipage" />
+                            <a href="#" style="color: #198754">şifremi unuttum laa</a>
                         </div>
                     </div> 
                 </div>
@@ -37,4 +36,5 @@
 
     </h:body>
 </html>
+
 
