@@ -6,9 +6,11 @@
 package controller;
 
 import entity.User;
+import java.io.Serializable;
 import java.util.List;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import model.UserModel;
 
 /**
@@ -16,8 +18,8 @@ import model.UserModel;
  * @author yahya
  */
 @Named(value = "UserBean")
-@Dependent
-public class UserBean {
+@SessionScoped
+public class UserBean implements Serializable {
 
     /**
      * Creates a new instance of PersonBean
@@ -26,7 +28,7 @@ public class UserBean {
     public UserBean() {
     }
     private int id;
-    private String username;
+    private String email;
     private String password;
 
     public int getId() {
@@ -37,12 +39,12 @@ public class UserBean {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -63,14 +65,28 @@ public class UserBean {
         this.model = model;
     }
     public void create(){
-        User u = new User(this.username,this.password,this.id);
+        User u = new User(this.email,this.password,this.id);
         this.getModel().insert(u);
     }
-    public void login(){
-        User u = new User(this.username,this.password,this.id);
-        this.getModel().login(u);
+    public String login(){
+        User u = new User(this.email,this.password,this.id);
+        String response = this.getModel().login(u);
+        
+        if(!response.equals("false")) {
+            return "student/dashboard?faces-redirect=true";
+        }
+        else {
+            FacesContext.getCurrentInstance().getExternalContext().getFlash()
+                    .put("error", "Email veya şifre yanlış!");
+            return "login?faces-redirect=true";
+        }
     }
-    public List<User> getList(){
-       return this.getModel().getList();
+    public String getList(){
+        List<User> userList = this.getModel().getList();
+        for(User u: userList) {
+            System.out.println(u.getEmail());
+        }
+        
+        return "login";
     }
 }

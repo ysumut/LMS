@@ -34,30 +34,31 @@ public class UserModel {
             System.out.println(e.getMessage());
         } 
     }
-    public boolean login(User u){
-        String sorgu = "SELECT * FROM user WHERE tc=? AND sifre=?"; // dğişecek
+    public String login(User u){
+        String sorgu = "SELECT * FROM users WHERE email=? AND password=?";
+        
         try{
             PreparedStatement ps = this.getDb().connect().prepareStatement(sorgu);
-            ps.setString(1, u.getUsername());
+            ps.setString(1, u.getEmail());
             ps.setString(2, u.getPassword());
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                return true;
-            }else{
-                return false;
+            if(rs.next()) {
+                return rs.getString("type");
             }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
+            else return "false";
         }
-        return false;
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return "false";
+        }
     }
     public List<User> getList(){
         List<User> uList = new ArrayList<>();
         try{
            Statement st = this.getDb().connect().createStatement(); 
-           ResultSet rs = st.executeQuery("sorgu");
+           ResultSet rs = st.executeQuery("SELECT * FROM users");
            while(rs.next()){
-               User u = new User("username","password",1);// değişecek bölge rs.getString(usernamegibi gibi
+               User u = new User(rs.getString("email"), rs.getString("password"), rs.getInt("id"));
                uList.add(u);
            }
         }catch(Exception e){
