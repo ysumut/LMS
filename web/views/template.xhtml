@@ -10,7 +10,7 @@
         <meta name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit-no"></meta> 
     </h:head>
     <h:body style="background-image:url(#{request.contextPath}/resources/images/background.jpg)">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-success">
+        <h:form role="nav" class="navbar navbar-expand-lg navbar-light bg-light border-success">
             <a class="navbar-brand" href="#{request.contextPath}">
                 <img src="/docs/4.6/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="" />
                 LMS
@@ -18,17 +18,17 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+            
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#{request.contextPath}/faces/views/student/dashboard.xhtml">Öğrenim Bilgileri</a>
+                        <h:commandLink class="nav-link" action="/views/student/dashboard?faces-redirect=true" value="Öğrenim Bilgileri" />
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#{request.contextPath}/faces/views/student/lessons.xhtml">Dersler</a>
+                        <h:commandLink class="nav-link" action="/views/student/lessons?faces-redirect=true" value="Dersler" />
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#{request.contextPath}/faces/views/student/messages.xhtml">Mesajlar</a>
+                        <h:commandLink class="nav-link" action="/views/student/messages?faces-redirect=true" value="Mesajlar" />
                     </li>
                 </ul>
 
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-        </nav>
+        </h:form>
 
 
         <div class="container">

@@ -1,36 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import entity.User;
-import java.io.Serializable;
 import java.util.List;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import model.UserModel;
 
-/**
- *
- * @author yahya
- */
-@Named(value = "UserBean")
-@SessionScoped
-public class UserBean implements Serializable {
 
-    /**
-     * Creates a new instance of PersonBean
-     */
-    private UserModel model;
+@ManagedBean(name = "UserBean")
+@SessionScoped
+public class UserBean {
     public UserBean() {
     }
+    
+    private UserModel model;
     private int id;
     private String email;
     private String password;
-
+    
     public int getId() {
         return id;
     }
@@ -65,14 +53,14 @@ public class UserBean implements Serializable {
         this.model = model;
     }
     public void create(){
-        User u = new User(this.email,this.password,this.id);
-        this.getModel().insert(u);
+        //User u = new User(this.email,this.password,this.id);
+        //this.getModel().insert(u);
     }
     public String login(){
-        User u = new User(this.email,this.password,this.id);
-        String response = this.getModel().login(u);
+        User user = this.getModel().login(this.email, this.password);
         
-        if(!response.equals("false")) {
+        if(user.getStatus()) {
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", user);
             return "student/dashboard?faces-redirect=true";
         }
         else {

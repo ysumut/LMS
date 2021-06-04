@@ -6,13 +6,15 @@
                 template="/views/template.xhtml">
 
     <ui:define name="content">
+        <ui:param name="mystudent" value="#{StudentBean.studentInfo}" />
         
         <div class="mt-5">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Öğrenci Bilgileri</h5>
-                    <p class="card-text"><b>Bölüm: </b>Bilgisayar Mühendisliği</p>
-                    <p class="card-text"><b>Giriş Yılı: </b>2018</p>
+                    <p class="card-text"><b>Bölüm: </b>#{mystudent.getDepartments_str()}</p>
+                    <p class="card-text"><b>Giriş Yılı: </b>#{mystudent.getRegistration_year()}</p>
+                    <p class="card-text"><b>Sömestir: </b>#{mystudent.getSemester()}</p>
                 </div>
             </div>
             <div class="card">
@@ -22,7 +24,7 @@
                 </div>
             </div>
         </div>
-        
+
     </ui:define>
 </ui:composition>
 

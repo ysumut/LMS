@@ -3,8 +3,19 @@ package entity;
 public class User {
 
     private String email;
-    private String password;
     private int userId;
+    private boolean status = false;
+    private String type;
+    
+    public User() {
+
+    }
+    
+    public User(int userId, String email, String type) {
+        this.userId = userId;
+        this.email = email;
+        this.type = type;
+    }
 
     public int getUserId() {
         return userId;
@@ -13,9 +24,7 @@ public class User {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-    public User() {
-
-    }
+    
     public String getEmail() {
         return email;
     }
@@ -24,17 +33,19 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public boolean getStatus() {
+        return status;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
-    public User(String email, String password, int userId) {
-        this.email = email;
-        this.password = password;
-        this.userId = userId;
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
