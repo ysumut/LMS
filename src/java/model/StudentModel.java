@@ -4,6 +4,7 @@ import entity.Student;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,6 +52,34 @@ public class StudentModel {
         catch(Exception e){
             System.out.println(e.getMessage());
             return new Student();
+        }
+    }
+    
+    public List<List<String>> getLessonNotes(int id){
+        String sorgu = "SELECT l.name, u_l.midterm_note, u_l.final_note "
+                + "FROM users u "
+                + "LEFT JOIN user_lessons u_l ON u.id = u_l.user_id "
+                + "LEFT JOIN lessons l ON u_l.lessons_id = l.id "
+                + "WHERE u.id = ?";
+        try{
+           PreparedStatement ps = this.getDb().connect().prepareStatement(sorgu);
+           ps.setInt(1, id);
+           ResultSet rs = ps.executeQuery();
+           
+           List<List<String>> lessons = new ArrayList<>();
+           while(rs.next()){
+               List<String> l = new ArrayList<>();
+               l.add(rs.getString("name"));
+               l.add(rs.getString("midterm_note"));
+               l.add(rs.getString("final_note"));
+               lessons.add(l);
+           }
+           
+           return lessons;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 }

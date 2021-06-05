@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+    </h:head>
+    <h:body style="background-image: url(http://klimauto.com/wp-content/uploads/importedmedia/importedmedia.jpg)">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-md-4 mx-auto m-5 text-center p-4 ">
+                    
+                    <h:outputText value="#{flash['error']}" />
+                    <br/>
+                    <h:outputText value="#{flash['durum']}"/>
+                    <div class="card text-white bg-dark " style="max-width: 40rem;">
+                        <div class="card-header bg-transparent border-success">Admin login</div>
+                        <div class="card-body text-dark">
+                            <h:form class="form_container">
+                                <h:outputText class="text-white" value="E-mail: "/>
+                                <h:inputText class="form-control" value="#{adminBean.username}" a:placeholder="@iuc.edu.tr/@ogr.iuc.edu.tr"/>
+                                <br/>
+                                <br/>
+                                <h:outputText class="text-white" value="Password: "/>
+                                <h:inputSecret class="form-control" value="#{adminBean.password}"  a:placeholder="password"/>
+                                <h:commandButton class="btn btn-dark mt-3" value="giriş yap" action="#{adminBean.login()}"/>
+                            </h:form>
+                        </div>
+                        <div class="card-footer bg-transparent border-success">
+                            <a href="#" style="color: #ffff">şifremi unuttum</a>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+
