@@ -3,21 +3,39 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="/views/template.xhtml">
+                template="/views/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
 
         <div class="mt-5">
-            <div class="card">
+            <div class="card border-success">
                 <div class="card-body">
                     <h5 class="card-title">Dersler</h5>
-                    Tablo olacak. Ders adı, kredisi vs
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Ders Programı</h5>
-                    Tablo Olacak
+                    
+                    <h:dataTable value = "#{StudentBean.lessons}" var = "lesson"
+                                 styleClass = "table table-striped">
+                        <h:column>    				
+                            <f:facet name = "header">Ders</f:facet>    				
+                                #{lesson[0]}
+                        </h:column>
+                        <h:column>    				
+                            <f:facet name = "header">Tip</f:facet>    				
+                                #{lesson[1] == 1 ? "Ortak Ders" : "Bölüm Dersi"}
+                        </h:column>
+                        <h:column>    				
+                            <f:facet name = "header">Kredi</f:facet>    				
+                                #{lesson[2]}
+                        </h:column>
+                        <h:column>    				
+                            <f:facet name = "header">AKTS</f:facet>    				
+                                #{lesson[3]}
+                        </h:column>
+                        <h:column>    				
+                            <f:facet name = "header">Dil</f:facet>    				
+                                #{lesson[4] == "tr" ? "Türkçe" : "İngilizce"}
+                        </h:column>
+                    </h:dataTable>
                 </div>
             </div>
         </div>

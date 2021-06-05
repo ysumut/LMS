@@ -10,7 +10,7 @@
         <ui:param name="mystudent" value="#{StudentBean.studentInfo}" />
 
         <div class="mt-5">
-            <div class="card">
+            <div class="card border-success">
                 <div class="card-body">
                     <h5 class="card-title">Öğrenci Bilgileri</h5>
                     <p class="card-text"><b>Bölüm: </b>#{mystudent.getDepartments_str()}</p>
@@ -18,7 +18,7 @@
                     <p class="card-text"><b>Sömestir: </b>#{mystudent.getSemester()}</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card border-success mt-4">
                 <div class="card-body">
                     <h5 class="card-title">Ders Notları</h5>
                     <h:dataTable value = "#{StudentBean.lessonsNote}" var = "lesson"

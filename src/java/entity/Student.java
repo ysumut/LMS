@@ -11,8 +11,8 @@ public class Student extends User {
         
     }
     
-    public Student(int userId, String email, int semester, int registration_year) {
-        super(userId, email, "student");
+    public Student(int userId, String full_name, String email, int semester, int registration_year) {
+        super(userId, full_name, email, "student");
         this.semester = semester;
         this.registration_year = registration_year;
     }

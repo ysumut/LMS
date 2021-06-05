@@ -49,7 +49,7 @@ public class UserModel {
                 User user;
                 
                 if(type.equals("student")) {
-                    user = new Student(rs.getInt("id"), rs.getString("email"), rs.getInt("semester"), rs.getInt("registration_year"));
+                    user = new Student(rs.getInt("id"), rs.getString("full_name"), rs.getString("email"), rs.getInt("semester"), rs.getInt("registration_year"));
                     user.setStatus(true);
                     return user;
                 }
@@ -71,7 +71,7 @@ public class UserModel {
            Statement st = this.getDb().connect().createStatement(); 
            ResultSet rs = st.executeQuery("SELECT * FROM users");
            while(rs.next()){
-               User u = new User(rs.getInt("id"), rs.getString("email"), rs.getString("type"));
+               User u = new User(rs.getInt("id"), rs.getString("full_name"), rs.getString("email"), rs.getString("type"));
                uList.add(u);
            }
         }catch(Exception e){

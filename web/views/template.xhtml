@@ -3,13 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>LMS</title>
         <h:outputStylesheet library="css" name="bootstrap.min.css"/>
         <meta name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit-no"></meta> 
     </h:head>
     <h:body style="background-image:url(#{request.contextPath}/resources/images/background.jpg)">
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{StudentBean.setUserSession()}" />
+        </f:metadata>
+
         <h:form role="nav" class="navbar navbar-expand-lg navbar-light bg-light border-success">
             <a class="navbar-brand" href="#{request.contextPath}">
                 <img src="/docs/4.6/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="" />
@@ -18,23 +23,23 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item #{view.viewId eq '/views/student/dashboard.xhtml' ? 'active' : ''}">
                         <h:commandLink class="nav-link" action="/views/student/dashboard?faces-redirect=true" value="Öğrenim Bilgileri" />
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item #{view.viewId eq '/views/student/lessons.xhtml' ? 'active' : ''}">
                         <h:commandLink class="nav-link" action="/views/student/lessons?faces-redirect=true" value="Dersler" />
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item #{view.viewId eq '/views/student/messages.xhtml' ? 'active' : ''}">
                         <h:commandLink class="nav-link" action="/views/student/messages?faces-redirect=true" value="Mesajlar" />
                     </li>
                 </ul>
 
                 <div class="dropdown">
                     <a class="navbar-brand dropdown-toggle" href="#" id="user-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Ad Soyad
+                        #{UserBean.user.getFull_name()}
                         <img src="/docs/4.6/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="" />
                     </a>
                     <div class="dropdown-menu" aria-labelledby="user-dropdown">
@@ -49,7 +54,7 @@
 
         <div class="container">
             <ui:insert name="content">
-                
+
             </ui:insert>
         </div>
 

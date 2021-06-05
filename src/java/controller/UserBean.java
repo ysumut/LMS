@@ -14,6 +14,7 @@ public class UserBean {
     public UserBean() {
     }
     
+    private User user;
     private UserModel model;
     private int id;
     private String email;
@@ -57,10 +58,10 @@ public class UserBean {
         //this.getModel().insert(u);
     }
     public String login(){
-        User user = this.getModel().login(this.email, this.password);
+        this.user = this.getModel().login(this.email, this.password);
         
-        if(user.getStatus()) {
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", user);
+        if(this.user.getStatus()) {
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", this.user);
             return "student/dashboard?faces-redirect=true";
         }
         else {
@@ -80,5 +81,9 @@ public class UserBean {
         }
         
         return "login";
+    }
+    
+    public User getUser() {
+        return user;
     }
 }

@@ -18,6 +18,14 @@ public class StudentBean implements Serializable {
     public StudentBean() {
         this.student = (Student) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
     }
+    
+    public void setUserSession() {
+        this.student = (Student) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+    }
+
+    public Student getStudent() {
+        return student;
+    }
 
     public Student getStudentInfo() {
         return this.model.getStudentByID(this.student.getUserId());
@@ -26,8 +34,8 @@ public class StudentBean implements Serializable {
     public List<List<String>> getLessonsNote() {
         return this.model.getLessonNotes(this.student.getUserId());
     }
-
-    public Student getStudent() {
-        return student;
+    
+    public List<List<String>> getLessons() {
+        return this.model.getLessons(this.student.getUserId());
     }
 }

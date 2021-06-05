@@ -3,6 +3,7 @@ package model;
 import entity.Student;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,13 +44,13 @@ public class StudentModel {
            if(rs.next()){
                List<String> departs = Arrays.asList(rs.getString("departs").split(","));
                
-               Student student = new Student(rs.getInt("id"),rs.getString("email"),rs.getInt("semester"),rs.getInt("registration_year"));
+               Student student = new Student(rs.getInt("id"),rs.getString("full_name"),rs.getString("email"),rs.getInt("semester"),rs.getInt("registration_year"));
                student.setDepartments(departs);
                return student;
            }
            else return new Student();
         }
-        catch(Exception e){
+        catch(SQLException e){
             System.out.println(e.getMessage());
             return new Student();
         }
@@ -77,7 +78,37 @@ public class StudentModel {
            
            return lessons;
         }
-        catch(Exception e){
+        catch(SQLException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    public List<List<String>> getLessons(int id){
+        String sorgu = "SELECT l.* "
+                + "FROM users u "
+                + "LEFT JOIN user_lessons u_l ON u.id = u_l.user_id "
+                + "LEFT JOIN lessons l ON u_l.lessons_id = l.id "
+                + "WHERE u.id = ?";
+        try{
+           PreparedStatement ps = this.getDb().connect().prepareStatement(sorgu);
+           ps.setInt(1, id);
+           ResultSet rs = ps.executeQuery();
+           
+           List<List<String>> lessons = new ArrayList<>();
+           while(rs.next()){
+               List<String> l = new ArrayList<>();
+               l.add(rs.getString("name"));
+               l.add(rs.getString("is_common"));
+               l.add(rs.getString("credit"));
+               l.add(rs.getString("akts"));
+               l.add(rs.getString("language"));
+               lessons.add(l);
+           }
+           
+           return lessons;
+        }
+        catch(SQLException e){
             System.out.println(e.getMessage());
             return null;
         }

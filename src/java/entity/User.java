@@ -2,16 +2,16 @@ package entity;
 
 public class User {
 
-    private String email;
+    private String full_name, email, type;
     private int userId;
     private boolean status = false;
-    private String type;
     
     public User() {
 
     }
     
-    public User(int userId, String email, String type) {
+    public User(int userId, String full_name, String email, String type) {
+        this.full_name = full_name;
         this.userId = userId;
         this.email = email;
         this.type = type;
@@ -47,5 +47,13 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getFull_name() {
+        return full_name;
+    }
+
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
     }
 }
