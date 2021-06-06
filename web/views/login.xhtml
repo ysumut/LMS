@@ -8,15 +8,14 @@
         <link rel="icon" href="#{request.contextPath}/resources/images/school.png" />
         <meta name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit-no"></meta> 
         <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="toastr.min.css"/>
     </h:head>
     <h:body style="background-image:url(https://thumbs.dreamstime.com/z/creative-education-background-educational-sketch-white-brick-copybooks-knowledge-concept-d-rendering-162705951.jpg) ">
 
         <div class="container">
             <div class="row mt-5">
                 <div class="col-md-4 mx-auto m-5 text-center p-4 ">
-                    
-                    <h:outputText value="#{flash['error']}" />
-                    
+
                     <div class="card border-success mt-5" style="max-width: 40rem;">
                         <div class="card-header bg-transparent border-success">Giriş Ekranı</div>
                         <div class="card-body text-success">
@@ -39,6 +38,19 @@
         </div>
 
     </h:body>
+
+    <h:outputScript library="js" name="jquery-3.6.0.min.js"/>
+    <h:outputScript library="js" name="bootstrap.min.js"/>
+    <h:outputScript library="js" name="toastr.min.js"/>
+    <script>
+        var success_msg = "#{flash['success']}";
+        var error_msg = "#{flash['error']}";
+
+        if (success_msg)
+            toastr.success(success_msg);
+        if (error_msg)
+            toastr.error(error_msg);
+    </script>
 </html>
 
 

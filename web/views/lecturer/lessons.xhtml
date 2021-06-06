@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/views/lecturer/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+
+        <div class="mt-5">
+            <div class="card border-success">
+                <div class="card-body">
+                    <h5 class="card-title">Dersler</h5>
+                    
+                    <h:dataTable value="#{LecturerBean.lessons}" var="lesson"
+                                 styleClass = "table table-striped">
+                        <h:column>    				
+                            <f:facet name = "header">Ders</f:facet>    				
+                                #{lesson[0]}
+                        </h:column>
+                        <h:column>    				
+                            <f:facet name = "header">Tip</f:facet>    				
+                                #{lesson[1] == 1 ? "Ortak Ders" : "Bölüm Dersi"}
+                        </h:column>
+                        <h:column>    				
+                            <f:facet name = "header">Kredi</f:facet>    				
+                                #{lesson[2]}
+                        </h:column>
+                        <h:column>    				
+                            <f:facet name = "header">AKTS</f:facet>    				
+                                #{lesson[3]}
+                        </h:column>
+                        <h:column>    				
+                            <f:facet name = "header">Dil</f:facet>    				
+                                #{lesson[4] == "tr" ? "Türkçe" : "İngilizce"}
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+</ui:composition>

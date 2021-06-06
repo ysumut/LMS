@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/views/lecturer/template.xhtml"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+
+        <div class="mt-5">
+            <div class="card border-success">
+                <div class="card-body">
+
+                    <div class="card border-info">
+                        <h4 class="m-3 text-center">Yeni Mesaj</h4>
+
+                        <h:form styleClass="card-body container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Bölüm:</label>
+                                    <h:selectOneMenu value="#{MessageBean.departmentID}" styleClass="form-control"> 
+                                        <f:selectItems value="#{MessageBean.lecturerDepartments.entrySet()}" var="dep" itemLabel="#{dep.value}" itemValue="#{dep.key}" />
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Başlık:</label>
+                                    <h:inputText styleClass="form-control" value="#{MessageBean.message.title}" />
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <label>İçerik:</label>
+                                    <h:inputTextarea styleClass="form-control" value="#{MessageBean.message.content}" />
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <h:commandButton class="btn btn-primary float-right" action="#{MessageBean.saveMessage()}" value="Gönder" />
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+
+
+                    <h:panelGroup id="message-list" class="list-group mt-5">
+                        <c:forEach var="msg" items="#{MessageBean.lecturerMessages}">
+                            <a class="list-group-item list-group-item-action flex-column align-items-start border-info">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">#{msg[0]}</h5>
+                                    <small class="text-muted">#{msg[3]}</small>
+                                </div>
+                                <p class="mb-1">#{msg[1]}</p>
+                                <small class="text-muted">#{msg[2]}</small>
+                            </a>
+                        </c:forEach>
+                    </h:panelGroup>
+
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+    <ui:define name="script">
+        <script>
+            var success_msg = "#{flash['success']}";
+            var error_msg = "#{flash['error']}";
+
+            if (success_msg)
+                toastr.success(success_msg);
+            if (error_msg)
+                toastr.error(error_msg);
+        </script>
+    </ui:define>
+</ui:composition>

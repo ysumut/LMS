@@ -57,8 +57,6 @@
                                 <label>Ders</label> <br/>
                                 <h:selectOneMenu value="#{LecturerBean.lessonID}" styleClass="form-control"> 
                                     <f:selectItems value="#{LecturerBean.student_lessons.entrySet()}" var="lesson" itemLabel="#{lesson.value}" itemValue="#{lesson.key}" />
-                                    
-                                    
                                     <f:ajax listener="#{LecturerBean.catchLessonID}" render="student-note" />
                                 </h:selectOneMenu>
                             </div>
