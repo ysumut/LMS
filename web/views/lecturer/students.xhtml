@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/views/lecturer/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="content">
+
+        <div class="mt-5">
+            <div class="card border-success">
+                <div class="card-body">
+                    <h5 class="card-title">Öğrenciler</h5>
+
+                    <h:form id="student-table">
+                        <h:dataTable value = "#{LecturerBean.students}" var = "student"
+                                     styleClass = "table table-striped">
+                            <h:column>    				
+                                <f:facet name = "header">Ad Soyad</f:facet>    				
+                                    #{student[1]}
+                            </h:column>
+                            <h:column>    				
+                                <f:facet name = "header">Email</f:facet>    				
+                                    #{student[2]}
+                            </h:column>
+                            <h:column>    				
+                                <f:facet name = "header">Toplam Aldığı Ders</f:facet>    				
+                                    #{student[3]}
+                            </h:column>
+                            <h:column>    				
+                                <f:facet name = "header">İşlem</f:facet>    				
+                                <h:commandButton styleClass="btn btn-primary btn-sm" onclick="$('.modal').modal('show')" action="#{LecturerBean.setStudent(student)}" value="Not Gir">
+                                    <f:ajax execute="@this" render="student-note" />
+                                </h:commandButton>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <h:form id="student-note" styleClass="modal-content">
+                    <div class="modal-header">
+                        <b>#{LecturerBean.student_name}</b>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Ders</label> <br/>
+                                <h:selectOneMenu value="#{LecturerBean.lessonID}" styleClass="form-control"> 
+                                    <f:selectItems value="#{LecturerBean.student_lessons.entrySet()}" var="lesson" itemLabel="#{lesson.value}" itemValue="#{lesson.key}" />
+                                    
+                                    
+                                    <f:ajax listener="#{LecturerBean.catchLessonID}" render="student-note" />
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label>Vize Notu</label> <br/>
+                                <h:inputText styleClass="form-control" value="#{LecturerBean.midtermNote}" />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Final Notu</label> <br/>
+                                <h:inputText styleClass="form-control" value="#{LecturerBean.finalNote}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary mr-3" data-dismiss="modal">İptal</button>
+                        <h:commandButton action="#{LecturerBean.saveStudentNote()}" onclick="$('.modal').modal('hide')" styleClass="btn btn-success" value="Kaydet" />  
+                    </div>
+                </h:form>
+            </div>
+        </div>
+
+    </ui:define>
+
+    <ui:define name="script">
+        <script>
+            var success_msg = "#{flash['success']}";
+            var error_msg = "#{flash['error']}";
+            
+            if(success_msg) toastr.success(success_msg);
+            if(error_msg) toastr.error(error_msg);
+        </script>
+    </ui:define>
+</ui:composition>

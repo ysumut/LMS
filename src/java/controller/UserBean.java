@@ -62,7 +62,7 @@ public class UserBean {
         
         if(this.user.getStatus()) {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", this.user);
-            return "student/dashboard?faces-redirect=true";
+            return this.user.getType() + "/dashboard?faces-redirect=true";
         }
         else {
             FacesContext.getCurrentInstance().getExternalContext().getFlash()

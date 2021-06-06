@@ -5,8 +5,9 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Giriş | LMS</title>
-        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <link rel="icon" href="#{request.contextPath}/resources/images/school.png" />
         <meta name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit-no"></meta> 
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     </h:head>
     <h:body style="background-image:url(https://thumbs.dreamstime.com/z/creative-education-background-educational-sketch-white-brick-copybooks-knowledge-concept-d-rendering-162705951.jpg) ">
 
@@ -25,7 +26,7 @@
                                 <br/>
                                 <br/>
                                 <h:outputText value="Şifre "/>
-                                <h:inputSecret class="form-control" value="#{UserBean.password}" a:placeholder="password"/>
+                                <h:inputSecret class="form-control" value="#{UserBean.password}" a:placeholder="Şifre"/>
                                 <h:commandButton class="btn btn-outline-success mt-3" value="Giriş Yap" action="#{UserBean.login()}"/>
                             </h:form>
                         </div>

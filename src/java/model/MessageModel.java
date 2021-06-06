@@ -17,7 +17,8 @@ public class MessageModel {
                 + "FROM messages m "
                 + "INNER JOIN users u ON m.from_id = u.id "
                 + "INNER JOIN departments d ON m.department_id = d.id "
-                + "WHERE m.department_id IN (SELECT u_d.department_id FROM users u LEFT JOIN user_departments u_d ON u.id = u_d.user_id WHERE u.id = ?) ";
+                + "WHERE m.department_id IN (SELECT u_d.department_id FROM users u LEFT JOIN user_departments u_d ON u.id = u_d.user_id WHERE u.id = ?) "
+                + "ORDER BY m.created_at DESC";
         
         try{
            PreparedStatement ps = this.db.connect().prepareStatement(sorgu);

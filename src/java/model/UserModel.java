@@ -5,6 +5,7 @@
  */
 package model;
 
+import entity.Lecturer;
 import entity.Student;
 import entity.User;
 import java.sql.PreparedStatement;
@@ -53,9 +54,11 @@ public class UserModel {
                     user.setStatus(true);
                     return user;
                 }
-                /*if(type.equals("lecturer")) {
-                    user = new Lecturer(rs.getInt("id"), rs.getString("email"), rs.getInt("semester"), rs.getInt("registration_year"));
-                }*/
+                else if(type.equals("lecturer")) {
+                    user = new Lecturer(rs.getInt("id"), rs.getString("full_name"), rs.getString("email"), rs.getInt("registration_year"));
+                    user.setStatus(true);
+                    return user;
+                }
                 else return new User();
             }
             else return new User();
