@@ -10,6 +10,7 @@
         <link rel="icon" href="#{request.contextPath}/resources/images/school.png" />
         <meta name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit-no"></meta> 
         <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="toastr.min.css"/>
     </h:head>
     <h:body style="background-image:url(#{request.contextPath}/resources/images/background.jpg)">
         <f:metadata>
@@ -45,7 +46,7 @@
                         <img src="#{request.contextPath}/resources/images/user.png" width="30" height="30" class="d-inline-block align-top" alt="user-icon" />
                     </a>
                     <div class="dropdown-menu" aria-labelledby="user-dropdown">
-                        <a class="dropdown-item" href="#">Profil</a>
+                        <h:commandLink class="dropdown-item" action="/views/student/profile?faces-redirect=true" value="Profil" />
                         <div class="dropdown-divider"></div>
                         <h:commandLink class="dropdown-item" action="#{UserBean.logout()}" value="Çıkış" />
                     </div>
@@ -62,5 +63,7 @@
 
         <h:outputScript library="js" name="jquery-3.6.0.min.js"/>
         <h:outputScript library="js" name="bootstrap.min.js"/>
+        <h:outputScript library="js" name="toastr.min.js"/>
+        <ui:insert name="script"></ui:insert>
     </h:body>
 </html>

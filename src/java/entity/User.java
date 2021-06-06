@@ -5,6 +5,7 @@ public class User {
     private String full_name, email, type;
     private int userId;
     private boolean status = false;
+    private String old_pass, new_pass, new_pass_repeat;
     
     public User() {
 
@@ -55,5 +56,29 @@ public class User {
 
     public void setFull_name(String full_name) {
         this.full_name = full_name;
+    }
+
+    public String getOld_pass() {
+        return old_pass;
+    }
+
+    public void setOld_pass(String old_pass) {
+        this.old_pass = old_pass;
+    }
+
+    public String getNew_pass() {
+        return new_pass;
+    }
+
+    public void setNew_pass(String new_pass) {
+        this.new_pass = new_pass;
+    }
+
+    public String getNew_pass_repeat() {
+        return new_pass_repeat;
+    }
+
+    public void setNew_pass_repeat(String new_pass_repeat) {
+        this.new_pass_repeat = new_pass_repeat;
     }
 }

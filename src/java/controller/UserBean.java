@@ -86,4 +86,40 @@ public class UserBean {
     public User getUser() {
         return user;
     }
+    
+    public void updateUser() {
+        boolean response = this.model.updateUser(this.user);
+
+        if (response) {
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", this.user);
+            FacesContext.getCurrentInstance().getExternalContext().getFlash()
+                    .put("success", "Profil güncellendi!");
+        } else {
+            FacesContext.getCurrentInstance().getExternalContext().getFlash()
+                    .put("error", "Bir hata ile karşılaşıldı!");
+        }
+    }
+
+    public void updatePassword() {
+        if (this.user.getNew_pass().length() < 6 || this.user.getNew_pass().length() > 18) {
+            FacesContext.getCurrentInstance().getExternalContext().getFlash()
+                    .put("error", "Yeni şifre uzunluğu 6 ile 18 karakter arasında olmalıdır!");
+            return;
+        }
+        if (!this.user.getNew_pass().equals(this.user.getNew_pass_repeat())) {
+            FacesContext.getCurrentInstance().getExternalContext().getFlash()
+                    .put("error", "Yeni şifreler eşleşmiyor!");
+            return;
+        }
+
+        String response = this.model.updatePassword(user);
+
+        if (response.equals("true")) {
+            FacesContext.getCurrentInstance().getExternalContext().getFlash()
+                    .put("success", "Şifre güncellendi!");
+        } else {
+            FacesContext.getCurrentInstance().getExternalContext().getFlash()
+                    .put("error", response);
+        }
+    }
 }

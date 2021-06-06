@@ -11,13 +11,14 @@ import model.StudentModel;
 @ManagedBean(name = "StudentBean")
 @SessionScoped
 public class StudentBean implements Serializable {
+
     private Student student;
-    private StudentModel model = new StudentModel();
-    
+    private final StudentModel model = new StudentModel();
+
     public StudentBean() {
         this.student = (Student) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
     }
-    
+
     public void setUserSession() {
         this.student = (Student) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
     }
@@ -29,11 +30,11 @@ public class StudentBean implements Serializable {
     public Student getStudentInfo() {
         return this.model.getStudentByID(this.student.getUserId());
     }
-    
+
     public List<List<String>> getLessonsNote() {
         return this.model.getLessonNotes(this.student.getUserId());
     }
-    
+
     public List<List<String>> getLessons() {
         return this.model.getLessons(this.student.getUserId());
     }
