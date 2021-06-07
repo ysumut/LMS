@@ -5,6 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 import model.UserModel;
 
 
@@ -62,17 +63,26 @@ public class UserBean {
         
         if(this.user.getStatus()) {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", this.user);
-            return this.user.getType() + "/dashboard?faces-redirect=true";
+            return "/views/" + this.user.getType() + "/dashboard.xhtml?faces-redirect=true";
         }
         else {
             FacesContext.getCurrentInstance().getExternalContext().getFlash()
                     .put("error", "Email veya şifre yanlış!");
-            return "login?faces-redirect=true";
+            
+            HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+            String url = request.getRequestURL().toString();
+            return url.substring(url.indexOf("/views"));
         }
     }
     public String logout() {
+        User u = (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        String user_type = u.getType();
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("user");
-        return "/views/login?faces-redirect=true";
+        
+        if(user_type.equals("student") || user_type.equals("lecturer")) 
+            return "/views/login?faces-redirect=true";
+        else
+            return "/views/admin/adminlogin?faces-redirect=true";
     }
     public String getList(){
         List<User> userList = this.getModel().getList();

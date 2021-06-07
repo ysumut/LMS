@@ -5,6 +5,7 @@
  */
 package model;
 
+import entity.Admin;
 import entity.Lecturer;
 import entity.Student;
 import entity.User;
@@ -52,7 +53,12 @@ public class UserModel {
                     user = new Lecturer(rs.getInt("id"), rs.getString("full_name"), rs.getString("email"), rs.getInt("registration_year"));
                     user.setStatus(true);
                     return user;
-                } else {
+                } else if (type.equals("admin")) {
+                    user = new Admin(rs.getInt("id"), rs.getString("full_name"), rs.getString("email"));
+                    user.setStatus(true);
+                    return user;
+                } 
+                else {
                     return new User();
                 }
             } else {

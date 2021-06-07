@@ -4,37 +4,46 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>Facelet Title</title>
-        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <title>Admin Girişi | LMS</title>
+        <link rel="icon" href="#{request.contextPath}/resources/images/school.png" />
+        <meta name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit-no"></meta> 
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="toastr.min.css"/>
     </h:head>
     <h:body style="background-image: url(http://klimauto.com/wp-content/uploads/importedmedia/importedmedia.jpg)">
         <div class="container">
             <div class="row mt-5">
                 <div class="col-md-4 mx-auto m-5 text-center p-4 ">
                     
-                    <h:outputText value="#{flash['error']}" />
-                    <br/>
-                    <h:outputText value="#{flash['durum']}"/>
                     <div class="card text-white bg-dark " style="max-width: 40rem;">
-                        <div class="card-header bg-transparent border-success">Admin login</div>
+                        <div class="card-header bg-transparent border-success">Admin Girişi</div>
                         <div class="card-body text-dark">
                             <h:form class="form_container">
-                                <h:outputText class="text-white" value="E-mail: "/>
-                                <h:inputText class="form-control" value="#{adminBean.username}" a:placeholder="@iuc.edu.tr/@ogr.iuc.edu.tr"/>
+                                <h:outputText class="text-white" value="Kullanıcı Adı: "/>
+                                <h:inputText class="form-control mt-2" value="#{UserBean.email}" a:placeholder="Kullanıcı adı"/>
                                 <br/>
-                                <br/>
-                                <h:outputText class="text-white" value="Password: "/>
-                                <h:inputSecret class="form-control" value="#{adminBean.password}"  a:placeholder="password"/>
-                                <h:commandButton class="btn btn-dark mt-3" value="giriş yap" action="#{adminBean.login()}"/>
+                                <h:outputText class="text-white" value="Şifre "/>
+                                <h:inputSecret class="form-control mt-2" value="#{UserBean.password}"  a:placeholder="Şifre"/>
+                                <h:commandButton class="btn btn-success mt-3" value="Giriş Yap" action="#{UserBean.login()}"/>
                             </h:form>
-                        </div>
-                        <div class="card-footer bg-transparent border-success">
-                            <a href="#" style="color: #ffff">şifremi unuttum</a>
                         </div>
                     </div> 
                 </div>
             </div>
         </div>
     </h:body>
+    
+    <h:outputScript library="js" name="jquery-3.6.0.min.js"/>
+    <h:outputScript library="js" name="bootstrap.min.js"/>
+    <h:outputScript library="js" name="toastr.min.js"/>
+    <script>
+        var success_msg = "#{flash['success']}";
+        var error_msg = "#{flash['error']}";
+
+        if (success_msg)
+            toastr.success(success_msg);
+        if (error_msg)
+            toastr.error(error_msg);
+    </script>
 </html>
 
