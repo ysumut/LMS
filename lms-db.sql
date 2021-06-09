@@ -11,28 +11,11 @@
  Target Server Version : 80018
  File Encoding         : 65001
 
- Date: 05/06/2021 14:55:37
+ Date: 09/06/2021 23:57:23
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for admin
--- ----------------------------
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE `admin`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `full_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_turkish_ci NOT NULL,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_turkish_ci NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_turkish_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of admin
--- ----------------------------
-INSERT INTO `admin` VALUES (1, 'Admin Kullanıcısı', 'admin', 'admin');
 
 -- ----------------------------
 -- Table structure for departments
@@ -42,7 +25,7 @@ CREATE TABLE `departments`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_turkish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of departments
@@ -74,7 +57,7 @@ CREATE TABLE `departments_lessons`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FK__Lessons`(`lessons_id`) USING BTREE,
   INDEX `FK__Department`(`department_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1359 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = Fixed;
+) ENGINE = MyISAM AUTO_INCREMENT = 1359 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = FIXED;
 
 -- ----------------------------
 -- Records of departments_lessons
@@ -1450,7 +1433,7 @@ CREATE TABLE `lessons`  (
   `language` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_turkish_ci NOT NULL DEFAULT 'tr',
   `semester` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1239 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 1239 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of lessons
@@ -1643,8 +1626,6 @@ INSERT INTO `lessons` VALUES (185, 'Introduction to Environmental Engineering', 
 INSERT INTO `lessons` VALUES (186, 'Computer Programming', 0, 3, 4, 'en', 1);
 INSERT INTO `lessons` VALUES (187, 'Turkish Language I', 0, 2, 2, 'en', 1);
 INSERT INTO `lessons` VALUES (188, 'Turkish Language for Foreign Students', 0, 2, 2, 'en', 1);
-INSERT INTO `lessons` VALUES (189, 'Ataturk\'s Principles and History of Turkish Revolution I', 0, 2, 2, 'en', 1);
-INSERT INTO `lessons` VALUES (190, 'Ataturk\'s Principles and History of Turkish Revolution for', 0, 2, 2, 'en', 1);
 INSERT INTO `lessons` VALUES (191, 'Technical English I', 0, 2, 2, 'en', 1);
 INSERT INTO `lessons` VALUES (192, 'Art I*', 0, 0, 1, 'en', 1);
 INSERT INTO `lessons` VALUES (193, 'Physical Education I*', 0, 0, 1, 'en', 1);
@@ -1655,8 +1636,6 @@ INSERT INTO `lessons` VALUES (197, 'Ecology', 0, 2, 3, 'en', 2);
 INSERT INTO `lessons` VALUES (198, 'Static and Strength', 0, 2, 4, 'en', 2);
 INSERT INTO `lessons` VALUES (199, 'Turkish Language II', 0, 2, 2, 'en', 2);
 INSERT INTO `lessons` VALUES (200, 'Turkish Language for Foreign Students II', 0, 2, 2, 'en', 2);
-INSERT INTO `lessons` VALUES (201, 'Ataturk\'s Principles and History of Turkish Revolution II', 0, 2, 2, 'en', 2);
-INSERT INTO `lessons` VALUES (202, 'Ataturk\'s Principles and History of Turkish Revolution for Foreign Students I', 0, 2, 2, 'en', 2);
 INSERT INTO `lessons` VALUES (203, 'Technical English', 0, 2, 2, 'en', 2);
 INSERT INTO `lessons` VALUES (204, 'Art II* ', 0, 1, 1, 'en', 2);
 INSERT INTO `lessons` VALUES (205, 'Physical Education II*', 0, 1, 1, 'en', 2);
@@ -2089,610 +2068,33 @@ INSERT INTO `lessons` VALUES (631, 'Çelik Yapı Tasarımı*', 0, 3, 4, 'tr', 8)
 INSERT INTO `lessons` VALUES (632, 'Geoteknik Mühendisliğinde Tasarım*', 0, 3, 4, 'tr', 8);
 INSERT INTO `lessons` VALUES (633, 'Introduction to Earthquake Engineering*', 0, 3, 6, 'en', 8);
 INSERT INTO `lessons` VALUES (634, 'Introduction to Structural Control Systems*', 0, 3, 6, 'en', 8);
-INSERT INTO `lessons` VALUES (635, 'İnşaat Mühendisliği\'nde İş Hukuku Kavramları ve Uygulamaları* ', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (636, 'İnşaatta Paydaş Yönetimi*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (637, 'İş Sağlığı ve Güvenliği*', 0, 2, 2, 'tr', 8);
-INSERT INTO `lessons` VALUES (638, 'Öngermeli Beton Köprülerin Tasarımı*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (639, 'Slope Stability Analysis and Stabilization*', 0, 3, 6, 'en', 8);
-INSERT INTO `lessons` VALUES (640, 'Su Kaynakları Mühendisliği*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (641, 'Sürdürülebilir Havza Yönetimi*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (642, 'Uygulamalı Girişimcilik*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (643, 'Yapı Statiğinde İleri Yöntemler*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (644, 'Fizik 1', 0, 4, 6, 'tr', 1);
-INSERT INTO `lessons` VALUES (645, 'General Chemistry', 0, 3, 4, 'en', 1);
-INSERT INTO `lessons` VALUES (646, 'Jeofizik Mühendisliğine Giriş', 0, 3, 5, 'tr', 1);
-INSERT INTO `lessons` VALUES (647, 'Mathematics I', 0, 5, 6, 'en', 1);
-INSERT INTO `lessons` VALUES (648, 'Technical English I', 0, 2, 4, 'en', 1);
-INSERT INTO `lessons` VALUES (649, 'Bilgisayar Temelleri ve Programlamaya Giriş', 0, 3, 4, 'tr', 2);
-INSERT INTO `lessons` VALUES (650, 'Fizik II', 0, 4, 6, 'tr', 2);
-INSERT INTO `lessons` VALUES (651, 'General Geology ', 0, 4, 5, 'en', 2);
-INSERT INTO `lessons` VALUES (652, 'Mathematics II', 0, 5, 6, 'en', 2);
-INSERT INTO `lessons` VALUES (653, 'Technical English II', 0, 2, 4, 'en', 2);
-INSERT INTO `lessons` VALUES (654, 'Design in Earthscience', 0, 2, 4, 'en', 3);
-INSERT INTO `lessons` VALUES (655, 'Engineering Mathematics', 0, 3, 5, 'en', 3);
-INSERT INTO `lessons` VALUES (656, 'Jeofizikte Potansiyel Teori ', 0, 2, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (658, 'Statistics and Probability', 0, 2, 4, 'en', 3);
-INSERT INTO `lessons` VALUES (657, 'Jeofizikte Veri İşlem', 0, 2, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (659, 'Mineroloji ve Petrografi', 0, 2, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (660, 'Yerbilimlerinde Matlab*', 0, 3, 5, 'tr', 3);
-INSERT INTO `lessons` VALUES (661, 'Yerbilimlerinde Fortran Uygulamaları*', 0, 3, 5, 'tr', 3);
-INSERT INTO `lessons` VALUES (662, 'Differential Equations', 0, 3, 5, 'en', 4);
-INSERT INTO `lessons` VALUES (663, 'Elastik Dalga Yayınımı', 0, 2, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (664, 'Jeofizikte Elektromanyetik Alan', 0, 2, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (665, 'Yapısal Jeoloji', 0, 2, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (666, 'Bilimsel Yazım Kuralları ve Etik', 0, 2, 3, 'tr', 4);
-INSERT INTO `lessons` VALUES (667, 'Ölçme Bilgisi', 0, 2, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (668, 'Bilim Felsefesi ve Tarihi*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (669, 'Jeofizik ve Tarihsel Gelişimi*', 0, 2, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (670, 'Afet Yönetimi*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (671, 'Yermanyetizması*', 0, 2, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (672, 'Jeodinamik*', 0, 2, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (673, 'Paleoiklim ve Atmosfer Fiziği*', 0, 2, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (674, 'Kariyer Planlama*', 0, 1, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (675, 'Gravite Prospeksiyon', 0, 4, 6, 'tr', 5);
-INSERT INTO `lessons` VALUES (676, 'Elektrik Prospeksiyon', 0, 4, 6, 'tr', 5);
-INSERT INTO `lessons` VALUES (677, 'Engineering Geology', 0, 2, 5, 'en', 5);
-INSERT INTO `lessons` VALUES (678, 'Sismoloji*', 0, 3, 5, 'tr', 5);
-INSERT INTO `lessons` VALUES (679, 'Radioaktif Yöntemler*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (680, 'Paleomanyetizma*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (681, 'Gravimetri*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (682, 'Türkiye Jeolojisi*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (683, 'Stratigrafi İlkeleri*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (684, 'Sondaj Tekniği*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (685, 'Jeotermik*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (686, 'Manyetik Prospeksiyon', 0, 4, 6, 'tr', 6);
-INSERT INTO `lessons` VALUES (687, 'Sismik Prospeksiyon*', 0, 4, 6, 'tr', 6);
-INSERT INTO `lessons` VALUES (688, 'Elektromanyetik Prospeksiyon*', 0, 4, 6, 'tr', 6);
-INSERT INTO `lessons` VALUES (689, 'Zemin Mekaniği', 0, 2, 3, 'tr', 6);
-INSERT INTO `lessons` VALUES (690, 'Applied Seismology*', 0, 2, 3, 'en', 6);
-INSERT INTO `lessons` VALUES (691, 'Kamp Stajı*', 0, 0, 0, 'tr', 6);
-INSERT INTO `lessons` VALUES (692, 'Kurum Stajı*', 0, 0, 0, 'tr', 6);
-INSERT INTO `lessons` VALUES (693, 'İş Hukuku*', 0, 2, 2, 'tr', 6);
-INSERT INTO `lessons` VALUES (694, 'İş Sağlığı ve Güvenliği*', 0, 2, 2, 'tr', 6);
-INSERT INTO `lessons` VALUES (695, 'Mühendislik Ekonomisi*', 0, 2, 2, 'tr', 6);
-INSERT INTO `lessons` VALUES (696, 'Sayısal Analiz*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (697, 'Çevre Manyetizması*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (698, 'Well Logging', 0, 2, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (699, 'Jeofizik Semineri', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (700, 'Bitirme Projesi I*', 0, 2, 7, 'tr', 7);
-INSERT INTO `lessons` VALUES (701, 'Bitirme Projesi II*', 0, 2, 7, 'tr', 7);
-INSERT INTO `lessons` VALUES (702, 'Uzaktan Algılama ve CBS*', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (703, 'Sismotektonik*', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (704, 'Maden Jeolojisi ve Jeofiziği*', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (705, 'Yeraltı Suyu Arama Jeofiziği*', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (706, 'Deniz Jeofiziği* ', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (707, 'Sismik Veri İşlem*', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (708, 'Jeotermal Arama Jeofiziği*', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (709, 'Academic Reading*', 0, 2, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (710, 'Microzonation*', 0, 2, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (711, 'Bitirme Projesi I*', 0, 2, 7, 'tr', 8);
-INSERT INTO `lessons` VALUES (712, 'Bitirme Projesi II*', 0, 2, 7, 'tr', 8);
-INSERT INTO `lessons` VALUES (713, 'Yerfiziği', 0, 2, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (714, 'Hidrografi ve Oşinografi*', 0, 2, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (715, 'Sismik Stratigrafi*', 0, 2, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (716, 'Hidrakarbon Arama Jeof.*', 0, 2, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (717, 'Yapılarda Jeofizik Uygulamalar*', 0, 2, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (718, 'Mühendislik Sismolojisi*', 0, 3, 6, 'tr', 8);
-INSERT INTO `lessons` VALUES (719, 'Çevre ve Mühendislik Jeofiziği*', 0, 3, 6, 'tr', 8);
-INSERT INTO `lessons` VALUES (720, 'Uygulamalı Girişimcilik*', 0, 3, 6, 'tr', 8);
-INSERT INTO `lessons` VALUES (721, 'Academic Writing*', 0, 2, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (722, 'Georadar*', 0, 2, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (723, 'Geophysical Imaging in Archeology* ', 0, 2, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (724, 'Fizik I', 0, 4, 6, 'tr', 1);
-INSERT INTO `lessons` VALUES (725, 'General Chemistry', 0, 3, 4, 'en', 1);
-INSERT INTO `lessons` VALUES (726, 'Jeolojiye Giriş', 0, 4, 6, 'tr', 1);
-INSERT INTO `lessons` VALUES (727, 'Mathematics I', 0, 5, 6, 'en', 1);
-INSERT INTO `lessons` VALUES (728, 'Technical English I', 0, 2, 3, 'en', 1);
-INSERT INTO `lessons` VALUES (729, 'Fizik II', 0, 4, 6, 'tr', 2);
-INSERT INTO `lessons` VALUES (730, 'Genel Kimya Laboratuvarı', 0, 1, 4, 'tr', 2);
-INSERT INTO `lessons` VALUES (731, 'Kristalografi', 0, 3, 6, 'tr', 2);
-INSERT INTO `lessons` VALUES (732, 'Mathematics II', 0, 5, 6, 'en', 2);
-INSERT INTO `lessons` VALUES (733, 'Technical English II', 0, 2, 3, 'en', 2);
-INSERT INTO `lessons` VALUES (734, 'Bilim Felsefesi ve Tarihi*', 0, 2, 5, 'tr', 3);
-INSERT INTO `lessons` VALUES (735, 'Deneysel Tasarım*', 0, 2, 2, 'tr', 3);
-INSERT INTO `lessons` VALUES (736, 'İşletme Yönetimi*', 0, 2, 2, 'tr', 3);
-INSERT INTO `lessons` VALUES (737, 'Jeoloji Mühendisliğinde Malzeme Bilgisi', 0, 2, 2, 'tr', 3);
-INSERT INTO `lessons` VALUES (738, 'Mesleki Etik*', 0, 2, 2, 'tr', 3);
-INSERT INTO `lessons` VALUES (739, 'Mineralogy', 0, 3, 5, 'en', 3);
-INSERT INTO `lessons` VALUES (740, 'Paleontoloji', 0, 3, 5, 'tr', 3);
-INSERT INTO `lessons` VALUES (741, 'Petrography of Igneous Rocks', 0, 3, 6, 'en', 3);
-INSERT INTO `lessons` VALUES (742, 'Sedimenter Kayalar Petrografisi', 0, 2, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (743, 'Stratigrafi', 0, 2, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (744, 'İş Hukuku*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (745, 'İş Sağlığı ve Güvenliği*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (746, 'İşaret Dili*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (747, 'Kurum Stajı', 0, 0, 0, 'tr', 4);
-INSERT INTO `lessons` VALUES (748, 'Mühendislik Ekonomisi*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (749, 'Petrology of Metamorphic Rocks', 0, 3, 6, 'en', 4);
-INSERT INTO `lessons` VALUES (750, 'Plate Tectonics', 0, 2, 4, 'en', 4);
-INSERT INTO `lessons` VALUES (751, 'Sedimentoloji', 0, 2, 3, 'tr', 4);
-INSERT INTO `lessons` VALUES (752, 'Structural Geology', 0, 4, 8, 'en', 4);
-INSERT INTO `lessons` VALUES (753, 'Tarihsel Jeoloji', 0, 2, 3, 'tr', 4);
-INSERT INTO `lessons` VALUES (754, 'Biyostatigrafi*', 0, 2, 3, 'tr', 5);
-INSERT INTO `lessons` VALUES (755, 'Computer Operating Systems*', 0, 2, 3, 'en', 5);
-INSERT INTO `lessons` VALUES (756, 'Earthquake Geology*', 0, 2, 3, 'en', 5);
-INSERT INTO `lessons` VALUES (757, 'Hidrojeoloji', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (758, 'Hidroloji*', 0, 2, 3, 'tr', 5);
-INSERT INTO `lessons` VALUES (759, 'Jeokimya', 0, 3, 5, 'tr', 5);
-INSERT INTO `lessons` VALUES (760, 'Jeoloji Mühendisliğinde Statik*', 0, 2, 3, 'tr', 5);
-INSERT INTO `lessons` VALUES (761, 'Jeolojik Tasarım', 0, 2, 3, 'tr', 5);
-INSERT INTO `lessons` VALUES (762, 'Jeomorfoloji*', 0, 2, 3, 'tr', 5);
-INSERT INTO `lessons` VALUES (763, 'Optik Mineraloji*', 0, 2, 3, 'tr', 5);
-INSERT INTO `lessons` VALUES (764, 'Principle of Geophysics', 0, 2, 4, 'en', 5);
-INSERT INTO `lessons` VALUES (765, 'Sondaj Bilgisi', 0, 2, 3, 'tr', 5);
-INSERT INTO `lessons` VALUES (766, 'Zemin Mekaniği', 0, 3, 5, 'tr', 5);
-INSERT INTO `lessons` VALUES (767, 'Data Collection and Evolution in Geotechnics*', 0, 2, 4, 'en', 6);
-INSERT INTO `lessons` VALUES (768, 'Fotojeoloji*', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (769, 'Gemology*', 0, 2, 4, 'en', 6);
-INSERT INTO `lessons` VALUES (770, 'Geology of Turkey', 0, 3, 4, 'en', 6);
-INSERT INTO `lessons` VALUES (771, 'Jeoistatistik*', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (772, 'Jeoloji Mühendisliğinde Mukavemet*', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (773, 'Jeolojik Harita Kampı', 0, 0, 0, 'tr', 6);
-INSERT INTO `lessons` VALUES (774, 'Maden Yatakları', 0, 3, 5, 'tr', 6);
-INSERT INTO `lessons` VALUES (775, 'Mühendislik Jeolojisi', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (776, 'Ölçme Bilgisi ve Topografya*', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (777, 'Saha Jeolojisi', 0, 3, 6, 'tr', 6);
-INSERT INTO `lessons` VALUES (778, 'Teknik Çizim ve Modelleme*', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (779, 'Yeraltı Jeolojisi*', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (780, 'Baraj Jeolojisi*', 0, 3, 5, 'tr', 7);
-INSERT INTO `lessons` VALUES (781, 'Bitirme Projesi I', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (782, 'Çevre Jeolojisi', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (783, 'Fosil Yakıtlar Jeolojisi', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (784, 'Heyelan Jeolojisi*', 0, 3, 5, 'tr', 7);
-INSERT INTO `lessons` VALUES (785, 'Hidrojeokimya*', 0, 3, 5, 'tr', 7);
-INSERT INTO `lessons` VALUES (786, 'Igneous Petrology*', 0, 3, 5, 'en', 7);
-INSERT INTO `lessons` VALUES (787, 'Jeolojik Haritaların Yorumlanması*', 0, 3, 5, 'tr', 7);
-INSERT INTO `lessons` VALUES (788, 'Madencilik Bilgisi*', 0, 3, 5, 'tr', 7);
-INSERT INTO `lessons` VALUES (789, 'Microtectonics*', 0, 3, 5, 'en', 7);
-INSERT INTO `lessons` VALUES (790, 'Mikropaleontoloji*', 0, 3, 5, 'tr', 7);
-INSERT INTO `lessons` VALUES (791, 'Türkiye Metalik Madenleri*', 0, 3, 5, 'tr', 7);
-INSERT INTO `lessons` VALUES (792, 'Bitirme Projesi II', 0, 2, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (793, 'Ekonomik Doğal Taşlar*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (794, 'Jeotermal Sistemler*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (795, 'Kent Jeolojisi*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (796, 'Kömür Jeolojisi*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (797, 'Structural Petrology*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (798, 'Tıbbi Jeoloji*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (799, 'Tünel Jeolojisi*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (800, 'Uygulamalı Girişimcilik*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (801, 'Volcanology*', 0, 3, 5, 'en', 8);
-INSERT INTO `lessons` VALUES (802, 'Fizik I', 0, 4, 6, 'tr', 1);
-INSERT INTO `lessons` VALUES (803, 'Genel Kimya I', 0, 4, 6, 'tr', 1);
-INSERT INTO `lessons` VALUES (804, 'Genel Kimya Lab. I', 0, 2, 3, 'tr', 1);
-INSERT INTO `lessons` VALUES (904, 'Genel ve Anorganik Kimya', 0, 3, 4, 'tr', 1);
-INSERT INTO `lessons` VALUES (805, 'Mathematics I', 0, 4, 5, 'en', 1);
-INSERT INTO `lessons` VALUES (806, 'Technical English I', 0, 3, 5, 'en', 1);
-INSERT INTO `lessons` VALUES (807, 'Fizik II', 0, 4, 6, 'tr', 2);
-INSERT INTO `lessons` VALUES (808, 'Genel Kimya Lab. II', 0, 2, 3, 'tr', 2);
-INSERT INTO `lessons` VALUES (809, 'General Chemistry II', 0, 4, 6, 'en', 2);
-INSERT INTO `lessons` VALUES (810, 'Mathematics II', 0, 4, 5, 'en', 2);
-INSERT INTO `lessons` VALUES (811, 'Technical English II', 0, 3, 5, 'en', 2);
-INSERT INTO `lessons` VALUES (812, 'Analitik Kimya Lab. I', 0, 3, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (813, 'Analytical Chemistry I', 0, 3, 5, 'en', 3);
-INSERT INTO `lessons` VALUES (814, 'Anorganik Kimya I', 0, 3, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (815, 'Bilgisayar Temelleri ve Programlama*', 0, 3, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (816, 'Çekirdek Kimyası*', 0, 3, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (817, 'Fiziksel Kimya Laboratuarı I', 0, 2, 3, 'tr', 3);
-INSERT INTO `lessons` VALUES (818, 'Kimyacılar İçin Matematik*', 0, 3, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (819, 'Kuramsal Kimya*', 0, 3, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (820, 'Mineroloji*', 0, 3, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (821, 'Physical Chemistry I', 0, 4, 6, 'en', 3);
-INSERT INTO `lessons` VALUES (822, 'Analitik Kimya Laboratuarı II', 0, 3, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (823, 'Analytical Chemistry II', 0, 3, 5, 'en', 4);
-INSERT INTO `lessons` VALUES (824, 'Bilgi Toplama ve Değerlendirme*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (825, 'Doğal Nanokompozitler*', 0, 3, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (826, 'Ekonomi*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (827, 'Fiziksel Kimya Laboratuarı II', 0, 2, 3, 'tr', 4);
-INSERT INTO `lessons` VALUES (828, 'Günlük Hayatta Kimya*', 0, 3, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (829, 'İş Hukuku*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (830, 'İş Sağlığı ve Güvenliği*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (831, 'İşaret Dili*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (832, 'Kimya Tarihi*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (833, 'Kimyacılar İçin Teknik Resim*', 0, 3, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (834, 'Kimyada Bilgisayar Uygulamaları*', 0, 3, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (835, 'Organik Lab. Tekniği*', 0, 3, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (836, 'Physical Chemistry II', 0, 4, 6, 'en', 4);
-INSERT INTO `lessons` VALUES (837, 'Yenilenebilir Enerji Kimyası*', 0, 3, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (838, 'Analitik Kimyada Dengeler*', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (839, 'Anorganik Kimya Lab.', 0, 2, 3, 'tr', 5);
-INSERT INTO `lessons` VALUES (840, 'Biyokimyada Temel Teknikler*', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (841, 'Çevre Kimyası*', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (842, 'Çözücüler*', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (843, 'Elektrokimya I*', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (844, 'Endüstriyel Mikrobiyoloji*', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (845, 'Enstrümental Analiz', 0, 3, 5, 'tr', 5);
-INSERT INTO `lessons` VALUES (846, 'Enstrümental Analiz Lab.', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (847, 'Fiziksel Kimya III*', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (848, 'Organic Chemistry I', 0, 4, 6, 'en', 5);
-INSERT INTO `lessons` VALUES (849, 'Organik Kimya Lab. I', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (850, 'Yeşil ve Sürdürülebilir Kimya*', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (851, 'Anorganik Kimya II', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (852, 'Biyokimya I', 0, 3, 5, 'tr', 6);
-INSERT INTO `lessons` VALUES (853, 'Biyokimya Lab. I', 0, 2, 3, 'tr', 6);
-INSERT INTO `lessons` VALUES (854, 'Doğada Gerçekleşen Kimya Olayları*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (855, 'Elektrokimya II*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (856, 'Endüstriyel Analiz*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (857, 'Energy Conversion and Storage Systems*', 0, 3, 4, 'en', 6);
-INSERT INTO `lessons` VALUES (858, 'Enstrümental Analizde Seçme Konular*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (859, 'Kompozit Malzemeler*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (860, 'Koordinasyon Kimyası*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (861, 'Organic Chemistry II', 0, 4, 6, 'en', 6);
-INSERT INTO `lessons` VALUES (862, 'Organik Kimya Lab. II', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (863, 'Organik Reaksiyon Mekanizması*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (864, 'Toksikoloji ve Hijyen*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (865, 'Yeşil Kimyaya Fizikokimyasal Yaklaşım*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (866, 'Besin Kimyası I*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (867, 'Bitirme Projesi I', 0, 2, 9, 'tr', 7);
-INSERT INTO `lessons` VALUES (868, 'Biyokimya II', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (869, 'Biyokimya Lab. II', 0, 1, 2, 'tr', 7);
-INSERT INTO `lessons` VALUES (870, 'Biyokimyada Seçme Konular I*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (871, 'Colloid Chemistry*', 0, 3, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (872, 'Inorganic Industrial Chemistry*', 0, 3, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (873, 'Klinik Kimyası*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (874, 'Kozmetik Kimya*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (875, 'Makromoleküller I*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (876, 'Nanochemistry*', 0, 3, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (877, 'Organik Boyar Maddeler*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (878, 'Pestisidler*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (879, 'Seramik Kimyası*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (880, 'Supramoleküller*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (881, 'Tekstil Kimyası I*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (882, 'Water and Its Technology*', 0, 3, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (883, 'Bitirme Projesi II', 0, 2, 9, 'tr', 7);
-INSERT INTO `lessons` VALUES (905, 'Genel ve Anorganik Kimya Laboratuvarı', 0, 1, 2, 'tr', 1);
-INSERT INTO `lessons` VALUES (884, 'Organik Analiz*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (885, 'Bitirme Projesi I', 0, 2, 9, 'tr', 8);
-INSERT INTO `lessons` VALUES (886, 'Adli Kimya*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (887, 'Besin Kimyası II*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (888, 'Bitirme Projesi II', 0, 2, 9, 'tr', 8);
-INSERT INTO `lessons` VALUES (889, 'Bitki Kimyası*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (890, 'Biyokimyada Seçme Konular II*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (891, 'Biyoteknoloji*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (892, 'Enzim Kimyası*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (893, 'İlaç Aktif Maddeler*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (894, 'Makromoleküller II*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (895, 'Organic Industrial Chemistry*', 0, 3, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (896, 'Organik Analiz*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (897, 'Organik Kimya III*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (898, 'Polymer Chemistry*', 0, 3, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (899, 'Selective Topics in Physical Chemistry*', 0, 3, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (900, 'Surface Analysis Techniques*', 0, 3, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (901, 'Tekstil Boyama Teknolojisi*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (902, 'Tekstil Kimyası II*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (903, 'Uygulamalı Girişimcilik*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (906, 'Kimya Mühendisliğine Giriş', 0, 2, 2, 'tr', 1);
-INSERT INTO `lessons` VALUES (907, 'Fizik I', 0, 4, 6, 'tr', 1);
-INSERT INTO `lessons` VALUES (908, 'Calculus I', 0, 2, 6, 'en', 1);
-INSERT INTO `lessons` VALUES (909, 'Technical English I', 0, 3, 5, 'en', 1);
-INSERT INTO `lessons` VALUES (910, 'Beden Eğitimi I*', 0, 0, 1, 'tr', 1);
-INSERT INTO `lessons` VALUES (911, 'Kimya Mühendisliğinde Teknik Resim', 0, 2, 4, 'tr', 2);
-INSERT INTO `lessons` VALUES (912, 'Kimya Mühendisliğinde Bilgisayar Programlama', 0, 2, 2, 'tr', 2);
-INSERT INTO `lessons` VALUES (913, 'Fizik II', 0, 4, 6, 'tr', 2);
-INSERT INTO `lessons` VALUES (914, 'Calculus II', 0, 2, 6, 'en', 2);
-INSERT INTO `lessons` VALUES (915, 'Technical English II', 0, 3, 5, 'en', 2);
-INSERT INTO `lessons` VALUES (916, 'Beden Eğitimi II*', 0, 0, 1, 'tr', 2);
-INSERT INTO `lessons` VALUES (917, 'Organik Kimya I', 0, 3, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (918, 'Organik Kimya Laboratuvarı I', 0, 1, 3, 'tr', 3);
-INSERT INTO `lessons` VALUES (919, 'Fizikokimya', 0, 3, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (920, 'Fizikokimya Laboratuvarı', 0, 1, 2, 'tr', 3);
-INSERT INTO `lessons` VALUES (921, 'Numerical Analysis', 0, 2, 5, 'en', 3);
-INSERT INTO `lessons` VALUES (922, 'Calculus III', 0, 2, 6, 'en', 3);
-INSERT INTO `lessons` VALUES (923, 'Çevre Teknolojisi*', 0, 2, 3, 'tr', 3);
-INSERT INTO `lessons` VALUES (924, 'Enerji Teknolojileri*', 0, 2, 3, 'tr', 3);
-INSERT INTO `lessons` VALUES (925, 'İşletme Yönetimi*', 0, 2, 3, 'tr', 3);
-INSERT INTO `lessons` VALUES (926, 'Yeşil Kimya*', 0, 2, 3, 'tr', 3);
-INSERT INTO `lessons` VALUES (927, 'Organik Kimya II', 0, 3, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (928, 'Organik Kimya Laboratuvarı II', 0, 1, 3, 'tr', 4);
-INSERT INTO `lessons` VALUES (929, 'Analitik Kimya', 0, 2, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (930, 'Analitik Kimya Laboratuvarı', 0, 1, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (931, 'Differential Equations', 0, 3, 6, 'en', 4);
-INSERT INTO `lessons` VALUES (932, 'Chemical Process Calculations', 0, 3, 5, 'en', 4);
-INSERT INTO `lessons` VALUES (933, 'Mühendislik Ekonomisi*', 0, 2, 3, 'tr', 4);
-INSERT INTO `lessons` VALUES (934, 'Bilim ve Kimya Tarihi*', 0, 2, 3, 'tr', 4);
-INSERT INTO `lessons` VALUES (935, 'Mesleki Etik*', 0, 2, 3, 'tr', 4);
-INSERT INTO `lessons` VALUES (936, 'Afet Kültürü*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (937, 'Şehir Kültür-İstanbul*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (938, 'İş Sağlığı ve Güvenliği*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (939, 'İşaret Dili*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (940, 'Kimya Müh. Termodinamiği I', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (941, 'Isı Transferi', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (942, 'Mathematical Modelling in Chemical Engineering', 0, 2, 5, 'en', 5);
-INSERT INTO `lessons` VALUES (943, 'Fluid Mechanics', 0, 2, 5, 'en', 5);
-INSERT INTO `lessons` VALUES (944, 'Biokimya*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (945, 'Polimer Fiziği*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (946, 'Tekstil Kimyası*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (947, 'Boya ve Bileşenleri*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (948, 'Seramik Malzemeler*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (949, 'Besin Kimyası I*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (950, 'İlaç Kimyasına Giriş*', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (951, 'Nanotechnology and Nanomaterials*', 0, 2, 4, 'en', 5);
-INSERT INTO `lessons` VALUES (952, 'Surface Chemistry*', 0, 2, 4, 'en', 5);
-INSERT INTO `lessons` VALUES (953, 'Experimental Design*', 0, 2, 4, 'en', 5);
-INSERT INTO `lessons` VALUES (954, 'Kimya Müh. Termodinamiği II', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (955, 'Kütle Transferi', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (956, 'Anorganik Teknolojiler', 0, 3, 3, 'tr', 6);
-INSERT INTO `lessons` VALUES (957, 'Kimyasal Reaksiyon Mühendisliği', 0, 2, 3, 'tr', 6);
-INSERT INTO `lessons` VALUES (958, 'Materials Science', 0, 3, 4, 'en', 6);
-INSERT INTO `lessons` VALUES (959, 'Endüstriyel Mikrobiyoloji*', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (960, 'Polimer Kimyası*', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (961, 'Tekstil Hazırlama Teknolojileri*', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (962, 'Boya Üretimi*', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (963, 'Kompozit Malzemeler*', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (964, 'Besin Kimyası II*', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (965, 'İlaç Üretim Teknolojileri*', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (966, 'Electrochemistry *', 0, 2, 4, 'en', 6);
-INSERT INTO `lessons` VALUES (967, 'Transport Phenomena*', 0, 2, 4, 'en', 6);
-INSERT INTO `lessons` VALUES (968, 'Kimya Mühendisliği Tasarımı', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (969, 'Temel İşlemler I', 0, 3, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (970, 'Organik Teknolojiler', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (971, 'Kimya Mühendisliği Lab. I', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (972, 'Reactor Design', 0, 3, 5, 'en', 7);
-INSERT INTO `lessons` VALUES (973, 'Bioreaktör Tasarımı*', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (974, 'Polimer Üretim Teknolojileri*', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (975, 'Tekstil Boyama Teknolojisi*', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (976, 'Boya Test Yöntemleri*', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (977, 'Metal Malzemeler ve Korozyon*', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (978, 'Besin Teknolojisi*', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (979, 'İlaç Üretiminde Kalite Yönetimi*', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (980, 'Instrumental Analysis*', 0, 2, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (981, 'Factory Organization*', 0, 2, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (982, 'Bitirme Projesi', 0, 2, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (983, 'Temel İşlemler II', 0, 3, 3, 'tr', 8);
-INSERT INTO `lessons` VALUES (984, 'Kimya Mühendisliği Laboratuvarı II', 0, 2, 3, 'tr', 8);
-INSERT INTO `lessons` VALUES (985, 'Proses Kontrol', 0, 2, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (986, 'Process Design', 0, 3, 5, 'en', 8);
-INSERT INTO `lessons` VALUES (987, 'Process Safety*', 0, 2, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (988, 'Fundamentals of Biotechnology*', 0, 2, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (989, 'Temel Prosesler*', 0, 2, 2, 'tr', 8);
-INSERT INTO `lessons` VALUES (990, 'Yakıt Hücreleri Teorisi ve Uygulamalar*', 0, 2, 2, 'tr', 8);
-INSERT INTO `lessons` VALUES (991, 'Su Arıtma Teknolojileri*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (992, 'İyon Değiştirme ve Ekstraksiyon*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (993, 'Uygulamalı Girişimcilik*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (994, 'Mathematics I', 0, 5, 6, 'en', 1);
-INSERT INTO `lessons` VALUES (995, 'General Chemistry', 0, 4, 8, 'en', 1);
-INSERT INTO `lessons` VALUES (996, 'Technical English I', 0, 2, 5, 'en', 1);
-INSERT INTO `lessons` VALUES (997, 'Fizik I', 0, 4, 6, 'tr', 1);
-INSERT INTO `lessons` VALUES (998, 'Beden Eğitimi I*', 0, 0, 1, 'tr', 1);
-INSERT INTO `lessons` VALUES (999, 'Mathematics II', 0, 5, 6, 'en', 2);
-INSERT INTO `lessons` VALUES (1000, 'Genel Jeoloji', 0, 2, 4, 'tr', 2);
-INSERT INTO `lessons` VALUES (1001, 'Technical English II', 0, 2, 4, 'en', 2);
-INSERT INTO `lessons` VALUES (1002, 'Fizik II', 0, 4, 6, 'tr', 2);
-INSERT INTO `lessons` VALUES (1003, 'Teknik Resim', 0, 4, 5, 'tr', 2);
-INSERT INTO `lessons` VALUES (1004, 'Beden Eğitimi II*', 0, 0, 1, 'tr', 2);
-INSERT INTO `lessons` VALUES (1005, 'Mine Valuation', 0, 2, 2, 'en', 3);
-INSERT INTO `lessons` VALUES (1006, 'Bilgisayar Temelleri ve Programlamaya Giriş', 0, 3, 5, 'tr', 3);
-INSERT INTO `lessons` VALUES (1007, 'Mineraloji-Petrografi', 0, 2, 3, 'tr', 3);
-INSERT INTO `lessons` VALUES (1008, 'Statik', 0, 2, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (1009, 'Dinamik', 0, 2, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (1010, 'Madenlerde Hazırlık ve Kazı', 0, 2, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (1011, 'Mine System Analysis*', 0, 3, 4, 'en', 3);
-INSERT INTO `lessons` VALUES (1012, 'Aggregate and Cement Technology*', 0, 3, 4, 'en', 3);
-INSERT INTO `lessons` VALUES (1013, 'Makine Elemanları*', 0, 3, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (1014, 'Malzeme*', 0, 3, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (1015, 'Mukavemet', 0, 2, 3, 'tr', 4);
-INSERT INTO `lessons` VALUES (1016, 'Maden Yatakları', 0, 2, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (1017, 'Açık İşletme Yöntemleri', 0, 2, 5, 'tr', 4);
-INSERT INTO `lessons` VALUES (1018, 'Yeraltı Üretim Yöntemleri', 0, 2, 5, 'tr', 4);
-INSERT INTO `lessons` VALUES (1019, 'Termodinamik', 0, 2, 3, 'tr', 4);
-INSERT INTO `lessons` VALUES (1020, 'Harita Bilgisi', 0, 2, 4, 'tr', 4);
-INSERT INTO `lessons` VALUES (1021, 'Energy Sources*', 0, 3, 4, 'en', 4);
-INSERT INTO `lessons` VALUES (1022, 'Drilling Techniques*', 0, 3, 4, 'en', 4);
-INSERT INTO `lessons` VALUES (1023, 'Afet Kültürü*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (1024, 'Şehir ve Kültür İstanbul*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (1025, 'İş Sağlığı ve Güvenliği*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (1026, 'İş Hukuku*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (1027, 'Fluid Mechanics', 0, 2, 3, 'en', 5);
-INSERT INTO `lessons` VALUES (1028, 'Madenlerde Ulaşım ve Su Atımı', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (1029, 'Cevher Hazırlama I', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (1030, 'Kaya Mekaniği', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (1031, 'Maden Yataklarının Değerlendirilmesi', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (1032, 'Mining and Environment*', 0, 3, 4, 'en', 5);
-INSERT INTO `lessons` VALUES (1033, 'Fragmentation and Blasting Techniques*', 0, 3, 4, 'en', 5);
-INSERT INTO `lessons` VALUES (1034, 'Genel Jeofizik*', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (1035, 'Madencilikte Bilgisayar Uygulamaları*', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (1036, 'Madencilikte Zemin Mekaniği Uygulamaları*', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (1037, 'Endüstriyel Mineraller*', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (1038, 'Mühendislik Jeolojisi', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (1039, 'İstatistik', 0, 2, 3, 'tr', 6);
-INSERT INTO `lessons` VALUES (1040, 'Tahkimat', 0, 2, 5, 'tr', 6);
-INSERT INTO `lessons` VALUES (1041, 'Cevher Hazırlama II', 0, 2, 5, 'tr', 6);
-INSERT INTO `lessons` VALUES (1042, 'Kazı Mekanizasyonu', 0, 2, 5, 'tr', 6);
-INSERT INTO `lessons` VALUES (1043, 'Waste Management*', 0, 3, 4, 'en', 6);
-INSERT INTO `lessons` VALUES (1044, 'Mineral Processing Plant & Design*', 0, 3, 4, 'en', 6);
-INSERT INTO `lessons` VALUES (1045, 'Öğütme Teknolojileri*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (1046, 'Akım Şeması Geliştirme*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (1047, 'Şev Stabilitesi*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (1048, 'Bitirme Projesi I', 0, 2, 6, 'tr', 7);
-INSERT INTO `lessons` VALUES (1049, 'Kömür Hazırlama', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1050, 'Maden Makineleri', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1051, 'Madenlerde Havalandırma', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1052, 'Solid Liquid Separation*', 0, 3, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (1053, 'Computer Applications in Mineral Processing*', 0, 3, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (1054, 'Organization and Management in Mines*', 0, 3, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (1055, 'Metalik Cevherleri Zenginleştirme Yöntemleri*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1056, 'Mermer Teknolojisi*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1057, 'Mühendislik Etiği*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1058, 'Mining and Processing Terminology', 0, 2, 3, 'en', 8);
-INSERT INTO `lessons` VALUES (1059, 'Bitirme Projesi II', 0, 2, 6, 'tr', 8);
-INSERT INTO `lessons` VALUES (1060, 'Maden Hukuku', 0, 2, 2, 'en', 8);
-INSERT INTO `lessons` VALUES (1061, 'Flotasyon', 0, 2, 3, 'en', 8);
-INSERT INTO `lessons` VALUES (1062, 'Kimyasal Zenginleştirme Yöntemleri', 0, 2, 3, 'en', 8);
-INSERT INTO `lessons` VALUES (1063, 'Surface Chemistry in Mineral Processing*', 0, 3, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (1064, 'Chemical Analysis in Minerals Industry*', 0, 3, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (1065, 'Solution Chemistry in Mineral Processing*', 0, 3, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (1066, 'Üretim Metalurjisi*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (1067, 'Uygulamalı Girişimcilik*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (1068, 'Nadir Toprak Elementleri*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (1069, 'Tünel Açma Yöntemleri*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (1070, 'Lineer Cebir', 0, 3, 4, 'tr', 1);
-INSERT INTO `lessons` VALUES (1071, 'Introduction to Mechanical Engineering', 0, 2, 3, 'en', 1);
-INSERT INTO `lessons` VALUES (1072, 'Introduction to Selected Research Topics in Mechanical Engineering I', 0, 2, 2, 'en', 1);
-INSERT INTO `lessons` VALUES (1073, 'Fizik I', 0, 4, 6, 'tr', 1);
-INSERT INTO `lessons` VALUES (1074, 'Matematik I', 0, 5, 6, 'tr', 1);
-INSERT INTO `lessons` VALUES (1075, 'Genel Kimya', 0, 3, 4, 'tr', 1);
-INSERT INTO `lessons` VALUES (1076, 'Beden Eğitimi I*', 0, 0, 1, 'tr', 1);
-INSERT INTO `lessons` VALUES (1077, 'Statik', 0, 4, 6, 'tr', 2);
-INSERT INTO `lessons` VALUES (1078, 'Introduction to Selected Research Topics in Mechanical Engineering II', 0, 2, 2, 'en', 2);
-INSERT INTO `lessons` VALUES (1079, 'Fizik II', 0, 4, 6, 'tr', 2);
-INSERT INTO `lessons` VALUES (1080, 'Matematik II', 0, 5, 6, 'tr', 2);
-INSERT INTO `lessons` VALUES (1081, 'Teknik Resim', 0, 4, 5, 'tr', 2);
-INSERT INTO `lessons` VALUES (1082, 'Beden Eğitimi II*', 0, 0, 1, 'tr', 2);
-INSERT INTO `lessons` VALUES (1083, 'Mathematics III', 0, 4, 6, 'en', 3);
-INSERT INTO `lessons` VALUES (1084, 'Thermodynamics', 0, 4, 6, 'en', 3);
-INSERT INTO `lessons` VALUES (1085, 'Materials Science', 0, 3, 5, 'en', 3);
-INSERT INTO `lessons` VALUES (1086, 'Dynamics', 0, 3, 4, 'en', 3);
-INSERT INTO `lessons` VALUES (1087, 'Technical Drawing Applications', 0, 2, 2, 'en', 3);
-INSERT INTO `lessons` VALUES (1088, 'Bilgisayar Temelleri ve Programlamaya Giriş', 0, 3, 5, 'tr', 3);
-INSERT INTO `lessons` VALUES (1089, 'Makine ve Medeniyet Felsefesi*', 0, 2, 2, 'tr', 3);
-INSERT INTO `lessons` VALUES (1090, 'Bilim ve Teknoloji Tarihi I*', 0, 2, 2, 'tr', 3);
-INSERT INTO `lessons` VALUES (1091, 'Strength of Materials', 0, 4, 6, 'en', 4);
-INSERT INTO `lessons` VALUES (1092, 'Elektrik Mühendisliğine Giriş', 0, 4, 5, 'tr', 4);
-INSERT INTO `lessons` VALUES (1093, 'Rigid Body Dynamics', 0, 4, 5, 'en', 4);
-INSERT INTO `lessons` VALUES (1094, 'Diferansiyel Denklemler', 0, 4, 6, 'tr', 4);
-INSERT INTO `lessons` VALUES (1095, 'Applied Thermodynamics*', 0, 3, 4, 'en', 4);
-INSERT INTO `lessons` VALUES (1096, 'Thermic Turbomachinery*', 0, 3, 4, 'en', 4);
-INSERT INTO `lessons` VALUES (1097, 'Engineering Materials*', 0, 3, 4, 'en', 4);
-INSERT INTO `lessons` VALUES (1098, 'Materials Applications*', 0, 3, 4, 'en', 4);
-INSERT INTO `lessons` VALUES (1099, 'Akışkanlar Mekaniği', 0, 3, 5, 'tr', 5);
-INSERT INTO `lessons` VALUES (1100, 'Dynamics of Machinery and Mechanisms', 0, 4, 6, 'en', 5);
-INSERT INTO `lessons` VALUES (1101, 'Makina Elemanları I', 0, 4, 5, 'tr', 5);
-INSERT INTO `lessons` VALUES (1102, 'Üretim Teknikleri', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (1103, 'Makine Laboratuvarı I', 0, 2, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (1104, 'Numerical Analysis', 0, 4, 4, 'en', 5);
-INSERT INTO `lessons` VALUES (1105, 'İş Sağlığı ve Güvenliği*', 0, 2, 2, 'tr', 5);
-INSERT INTO `lessons` VALUES (1106, 'İş Hukuku*', 0, 2, 2, 'tr', 5);
-INSERT INTO `lessons` VALUES (1107, 'System Dynamics and Control', 0, 4, 5, 'en', 6);
-INSERT INTO `lessons` VALUES (1108, 'Isı Transferi', 0, 4, 6, 'tr', 6);
-INSERT INTO `lessons` VALUES (1109, 'Makina Elemanları II', 0, 4, 6, 'tr', 6);
-INSERT INTO `lessons` VALUES (1110, 'Makina Laboratuvarı II', 0, 2, 5, 'tr', 6);
-INSERT INTO `lessons` VALUES (1111, 'Uygulamalı Akışkanlar Mekaniği*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (1112, 'Hidrolik Makinalar*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (1113, 'Metal Şekillendirme ve Birleştirme Tek.*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (1114, 'Mühendislikte Şekillendirme Kalıpları*', 0, 3, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (1115, 'Makina Projesi I', 0, 2, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1116, 'Bitirme Projesi I', 0, 2, 6, 'tr', 7);
-INSERT INTO `lessons` VALUES (1117, 'Analytical Mechanics*', 0, 3, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (1118, 'Modelling and Simulation of Dynamic Systems*', 0, 3, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (1119, 'Computer Aided Design*', 0, 3, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (1120, 'Introduction to Smart Materials*', 0, 3, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (1121, 'Introduction to Robotics*', 0, 3, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (1122, 'C/C++ for Mechanical Engineers*', 0, 3, 4, 'en', 7);
-INSERT INTO `lessons` VALUES (1123, 'İstatistik*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1124, 'Gaz Dinamiği*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1125, 'Yenilenebilir Enerji Kaynakları*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1126, 'Endüstriyel Kontrol ve Otomasyon I*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1127, 'Makine Mühendisliğinde İşaret İşleme*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1128, 'Motorlar*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1129, 'Makine Müh. Bilgisayar Uyg.*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1130, 'Endüstriyel Problemler ve Müh. Yaklaşımları*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1131, 'Kaynak Tasarımı ve İmalatı*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1132, 'Fabrika Tasarımı*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1133, 'Bilgisayar Destekli İmalat*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1134, 'Transport Tekniği*', 0, 3, 4, 'tr', 7);
-INSERT INTO `lessons` VALUES (1135, 'Makina Projesi II', 0, 2, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (1136, 'Bitirme Projesi II', 0, 2, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (1137, 'Finite Element Analysis*', 0, 3, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (1138, 'Mechanical Vibrations*', 0, 3, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (1139, 'Control of Mechanical Systems*', 0, 3, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (1140, 'Computer Aided Engineering*', 0, 3, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (1141, 'Introduction to Mechatronic System Design*', 0, 3, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (1142, 'Object Oriented Programming in Mechanical Engineering*', 0, 3, 4, 'en', 8);
-INSERT INTO `lessons` VALUES (1143, 'Makina Mühendisliğinde Kısmi Diferansiyel Denklemler*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (1144, 'Aerodinamik*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (1145, 'Isı Değiştiricileri*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (1146, 'Mikro ve Nano Akışkan Sistemleri*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (1147, 'Hidrojen Enerjisi ve Ekonomisi*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (1148, 'Rüzgar Enerjisi*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (1149, 'Endüstriyel Kontrol ve Otomasyon II*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (1150, 'Soğutma İlkeleri*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (1151, 'Tahribatsız Muayene Yöntemleri*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (1152, 'Ölçme Tekniği*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (1153, 'Mühendislikte Kalite*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (1154, 'Akustik*', 0, 3, 4, 'tr', 8);
-INSERT INTO `lessons` VALUES (1155, 'Makina Mühendisliğinde İmalat Uygulamaları*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (1156, 'Mühendislik Ekonomisi*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (1157, 'Uygulamalı Girişimcilik*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (1158, 'Bilgisayar Temelleri ve Programlamaya Giriş', 0, 3, 5, 'tr', 1);
-INSERT INTO `lessons` VALUES (1159, 'Fizik I', 0, 4, 6, 'tr', 1);
-INSERT INTO `lessons` VALUES (1160, 'General Chemistry', 0, 3, 4, 'en', 1);
-INSERT INTO `lessons` VALUES (1161, 'Mathematics I', 0, 5, 6, 'en', 1);
-INSERT INTO `lessons` VALUES (1162, 'Metalurji ve Malzeme Mühendisliğine Giriş', 0, 2, 4, 'en', 1);
-INSERT INTO `lessons` VALUES (1163, 'Fizik II', 0, 4, 6, 'tr', 2);
-INSERT INTO `lessons` VALUES (1164, 'Fiziksel Kimya', 0, 3, 8, 'tr', 2);
-INSERT INTO `lessons` VALUES (1165, 'Mathematics II', 0, 5, 6, 'en', 2);
-INSERT INTO `lessons` VALUES (1166, 'Teknik Resim', 0, 3, 5, 'tr', 2);
-INSERT INTO `lessons` VALUES (1167, 'Cevher Hazırlama*', 0, 2, 3, 'tr', 3);
-INSERT INTO `lessons` VALUES (1168, 'Differantial Equations', 0, 4, 6, 'en', 3);
-INSERT INTO `lessons` VALUES (1169, 'Görsel Programlama*', 0, 2, 3, 'tr', 3);
-INSERT INTO `lessons` VALUES (1170, 'Materials Science I', 0, 3, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (1171, 'Metalurji Mühendisliği Termodinamiği I', 0, 3, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (1172, 'Ölçme Tekniği', 0, 2, 3, 'tr', 3);
-INSERT INTO `lessons` VALUES (1173, 'Phase Diagrams', 0, 3, 3, 'en', 3);
-INSERT INTO `lessons` VALUES (1174, 'Sayısal Analiz*', 0, 2, 3, 'tr', 3);
-INSERT INTO `lessons` VALUES (1175, 'Statics For Metallurgical Engineers', 0, 2, 3, 'en', 3);
-INSERT INTO `lessons` VALUES (1176, 'Taşınım Olayları I', 0, 2, 4, 'tr', 3);
-INSERT INTO `lessons` VALUES (1177, 'Academic Writing And Presentation Techniques*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (1178, 'Bilim Tarihi*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (1179, 'İş Hukuku*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (1180, 'İş Sağlığı Ve Güvenliği*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (1181, 'İşaret Dili*', 0, 2, 2, 'tr', 4);
-INSERT INTO `lessons` VALUES (1182, 'Malzemelerin Elektronik Özellikleri', 0, 3, 5, 'tr', 4);
-INSERT INTO `lessons` VALUES (1183, 'Management Informatıon Systems*', 0, 2, 2, 'en', 4);
-INSERT INTO `lessons` VALUES (1184, 'Materials Science II', 0, 3, 5, 'en', 4);
-INSERT INTO `lessons` VALUES (1185, 'Metalurji Mühendisliği Termodinamiği II', 0, 3, 5, 'tr', 4);
-INSERT INTO `lessons` VALUES (1186, 'Strength for Metallurgical Engineers', 0, 2, 5, 'en', 4);
-INSERT INTO `lessons` VALUES (1187, 'Taşınım Olayları II', 0, 2, 6, 'tr', 4);
-INSERT INTO `lessons` VALUES (1188, 'Aluminium Forming Technologies*', 0, 2, 3, 'en', 5);
-INSERT INTO `lessons` VALUES (1189, 'Cam Bilimi ve Teknolojisi*', 0, 2, 3, 'tr', 5);
-INSERT INTO `lessons` VALUES (1190, 'Endüstriyel Fırınlar*', 0, 2, 3, 'tr', 5);
-INSERT INTO `lessons` VALUES (1191, 'Extractive Metallurgy I', 0, 3, 4, 'en', 5);
-INSERT INTO `lessons` VALUES (1192, 'Kütle ve Enerji Hesaplamaları*', 0, 2, 3, 'tr', 5);
-INSERT INTO `lessons` VALUES (1193, 'Malzemelerin Mekanik Özellikleri I', 0, 3, 5, 'tr', 5);
-INSERT INTO `lessons` VALUES (1194, 'Metallerin Isıl İşlemleri*', 0, 2, 3, 'tr', 5);
-INSERT INTO `lessons` VALUES (1195, 'Metallurgical Engineering Kinetics*', 0, 2, 3, 'en', 5);
-INSERT INTO `lessons` VALUES (1196, 'Metalurji Mühendisliği Laboratuvarı I', 0, 1, 5, 'tr', 5);
-INSERT INTO `lessons` VALUES (1197, 'Metalurjik Atık ve Çevre*', 0, 2, 3, 'tr', 5);
-INSERT INTO `lessons` VALUES (1198, 'Seramik Malzemeler', 0, 3, 4, 'tr', 5);
-INSERT INTO `lessons` VALUES (1199, 'Biyomalzemeler*', 0, 2, 3, 'tr', 6);
-INSERT INTO `lessons` VALUES (1200, 'Corrosion and Protection From Corrosion*', 0, 2, 3, 'tr', 6);
-INSERT INTO `lessons` VALUES (1201, 'Iron-Steel Production', 0, 3, 5, 'en', 6);
-INSERT INTO `lessons` VALUES (1202, 'Kompozit Malzemeler*', 0, 2, 3, 'tr', 6);
-INSERT INTO `lessons` VALUES (1203, 'Malzemelerin Mekanik Özellikleri II*', 0, 2, 3, 'tr', 6);
-INSERT INTO `lessons` VALUES (1204, 'Metalografi', 0, 2, 4, 'tr', 6);
-INSERT INTO `lessons` VALUES (1205, 'Metalurji Mühendisliği Laboratuarı II', 0, 1, 5, 'tr', 6);
-INSERT INTO `lessons` VALUES (1206, 'Özel Çelikler*', 0, 2, 3, 'tr', 6);
-INSERT INTO `lessons` VALUES (1207, 'Polimer Malzemeler*', 0, 2, 3, 'tr', 6);
-INSERT INTO `lessons` VALUES (1208, 'Refrakter Malzemeler*', 0, 2, 3, 'tr', 6);
-INSERT INTO `lessons` VALUES (1209, 'Statistical Process Control*', 0, 2, 3, 'en', 6);
-INSERT INTO `lessons` VALUES (1210, 'Üretim Metalurjisi II', 0, 2, 3, 'tr', 6);
-INSERT INTO `lessons` VALUES (1211, 'Biomedical Implant Technology*', 0, 2, 3, 'en', 7);
-INSERT INTO `lessons` VALUES (1212, 'Demir Dışı Metal Üretimi I*', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (1213, 'Demir ve Demirdışı Metal Alaşımları*', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (1214, 'Energy Conversion And Storage Applications Of Materials*', 0, 2, 3, 'en', 7);
-INSERT INTO `lessons` VALUES (1215, 'Kaynak Metalurjisi Ve Teknolojisi*', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (1216, 'Malzeme Seçimi ve Tasarımı*', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (1217, 'Metallerin Yeniden Kazanılması*', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (1218, 'Metalurji Mühendisliği Laboratuarı III', 0, 1, 5, 'tr', 7);
-INSERT INTO `lessons` VALUES (1219, 'Powder Metallurgy*', 0, 2, 3, 'en', 7);
-INSERT INTO `lessons` VALUES (1220, 'Principles of Casting', 0, 3, 5, 'en', 7);
-INSERT INTO `lessons` VALUES (1221, 'Proje Tasarımı', 0, 2, 5, 'tr', 7);
-INSERT INTO `lessons` VALUES (1222, 'Tahribatsız Muayene Yöntemleri*', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (1223, 'Üretim Tasarımı ve Maliyet Hesaplamaları*', 0, 2, 3, 'tr', 7);
-INSERT INTO `lessons` VALUES (1224, 'Adli Metalurji*', 0, 3, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (1225, 'Bitirme Projesi', 0, 2, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (1226, 'Demirdışı Metal Üretimi II*', 0, 2, 3, 'tr', 8);
-INSERT INTO `lessons` VALUES (1227, 'Döküm Teknolojileri*', 0, 2, 3, 'tr', 8);
-INSERT INTO `lessons` VALUES (1228, 'Fonksiyonel Seramikler*', 0, 2, 3, 'tr', 8);
-INSERT INTO `lessons` VALUES (1229, 'Malzeme Karakterizasyonu', 0, 3, 3, 'tr', 8);
-INSERT INTO `lessons` VALUES (1230, 'Malzemelerin Yüzey İşlemleri*', 0, 2, 3, 'tr', 8);
-INSERT INTO `lessons` VALUES (1231, 'Materials Characterization', 0, 3, 3, 'en', 8);
-INSERT INTO `lessons` VALUES (1232, 'Metalik Malzemelerin Mekanik Şekillendirilmesi', 0, 3, 3, 'tr', 8);
-INSERT INTO `lessons` VALUES (1233, 'Metalurji Mühendisliği Laboratuarı IV', 0, 1, 5, 'tr', 8);
-INSERT INTO `lessons` VALUES (1234, 'Mühendislik Plastikleri*', 0, 2, 3, 'tr', 8);
-INSERT INTO `lessons` VALUES (1235, 'Production Of Ferroalloys*', 0, 2, 3, 'tr', 8);
-INSERT INTO `lessons` VALUES (1236, 'Production Processes and Characteristics of Nanostructured Material*', 0, 2, 3, 'en', 8);
-INSERT INTO `lessons` VALUES (1237, 'Toplam Kalite Yönetimi*', 0, 2, 3, 'tr', 8);
-INSERT INTO `lessons` VALUES (1238, 'Uygulamalı Girişimcilik*', 0, 2, 3, 'tr', 8);
+
+-- ----------------------------
+-- Table structure for messages
+-- ----------------------------
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE `messages`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_turkish_ci NOT NULL,
+  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_turkish_ci NOT NULL,
+  `from_id` int(10) UNSIGNED NOT NULL COMMENT 'From User ID',
+  `department_id` int(10) UNSIGNED NOT NULL,
+  `created_at` datetime NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of messages
+-- ----------------------------
+INSERT INTO `messages` VALUES (1, 'Mesaj 1', 'Deneme içerik', 3, 1, '2021-06-06 00:23:28');
+INSERT INTO `messages` VALUES (2, 'Mesaj 2', 'Yeni dassadkdsa', 3, 7, '2021-06-06 20:10:36');
+INSERT INTO `messages` VALUES (3, 'Mesaj 3', 'merhabalarajsdjdsjdsjsdajdsjdsajdsajdasjsdadsaddsasaddasdas', 4, 2, '2021-06-06 00:38:46');
+INSERT INTO `messages` VALUES (4, 'Eyyy Elektrikçiler', 'Naber nasılsınız ????', 3, 5, '2021-06-06 21:12:45');
+INSERT INTO `messages` VALUES (5, 'Eyyy heçkırlar', 'Heçklemeyin laynnnnnnn!!!!', 3, 1, '2021-06-06 21:15:16');
+INSERT INTO `messages` VALUES (8, 'jeocularrr', 'HEYEHEWWHWHEDWWD', 4, 8, '2021-06-06 21:22:56');
+INSERT INTO `messages` VALUES (9, 'Nber lan yeşilaycılar', 'Ağlayın herkes sigara içiyo', 3, 3, '2021-06-07 12:08:32');
+INSERT INTO `messages` VALUES (10, 'Ben hocanız ebu', 'Ha ben ebu yusuf', 3, 1, '2021-06-08 11:13:57');
+INSERT INTO `messages` VALUES (11, 'Jeofizik ', 'sajddsjadsajjsadjasd\r\n', 4, 8, '2021-06-08 11:19:58');
 
 -- ----------------------------
 -- Table structure for user_departments
@@ -2703,7 +2105,7 @@ CREATE TABLE `user_departments`  (
   `user_id` int(10) UNSIGNED NULL DEFAULT NULL,
   `department_id` int(10) UNSIGNED NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_departments
@@ -2713,6 +2115,9 @@ INSERT INTO `user_departments` VALUES (2, 1, 2);
 INSERT INTO `user_departments` VALUES (3, 2, 3);
 INSERT INTO `user_departments` VALUES (4, 3, 1);
 INSERT INTO `user_departments` VALUES (5, 3, 5);
+INSERT INTO `user_departments` VALUES (8, 2, 7);
+INSERT INTO `user_departments` VALUES (9, 4, 8);
+INSERT INTO `user_departments` VALUES (10, 3, 3);
 
 -- ----------------------------
 -- Table structure for user_lessons
@@ -2725,18 +2130,21 @@ CREATE TABLE `user_lessons`  (
   `midterm_note` int(3) NULL DEFAULT NULL,
   `final_note` int(3) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_lessons
 -- ----------------------------
-INSERT INTO `user_lessons` VALUES (1, 1, 1, 100, 45);
-INSERT INTO `user_lessons` VALUES (2, 1, 2, NULL, NULL);
+INSERT INTO `user_lessons` VALUES (1, 1, 1, 90, 40);
+INSERT INTO `user_lessons` VALUES (2, 1, 5, 56, 81);
 INSERT INTO `user_lessons` VALUES (3, 2, 3, NULL, NULL);
 INSERT INTO `user_lessons` VALUES (4, 3, 1, NULL, NULL);
 INSERT INTO `user_lessons` VALUES (5, 3, 5, NULL, NULL);
-INSERT INTO `user_lessons` VALUES (6, 1, 13, 15, 100);
-INSERT INTO `user_lessons` VALUES (7, 1, 3, NULL, NULL);
+INSERT INTO `user_lessons` VALUES (6, 1, 20, 15, 100);
+INSERT INTO `user_lessons` VALUES (7, 2, 5, 70, 0);
+INSERT INTO `user_lessons` VALUES (8, 3, 6, NULL, NULL);
+INSERT INTO `user_lessons` VALUES (9, 3, 143, NULL, NULL);
+INSERT INTO `user_lessons` VALUES (10, 1, 143, 30, 85);
 
 -- ----------------------------
 -- Table structure for users
@@ -2751,13 +2159,15 @@ CREATE TABLE `users`  (
   `registration_year` int(4) NULL DEFAULT NULL,
   `semester` int(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_turkish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 'Yusuf Umut Bulak', 'umutbulak@ogr.iuc.edu.tr', 'deneme123', 'student', 2018, 1);
 INSERT INTO `users` VALUES (2, 'Yahya Boyalı', 'yahya@ogr.iuc.edu.tr', 'yahya123', 'student', 2017, 2);
-INSERT INTO `users` VALUES (3, 'Ebu Yusuf Güven', 'hoca@gmail.com', 'benhoca123', 'lecturer', 2005, NULL);
+INSERT INTO `users` VALUES (3, 'Ebu Yusuf Güven', 'hoca@gmail.com', 'hoca123', 'lecturer', 2005, NULL);
+INSERT INTO `users` VALUES (4, 'Davut Çelik', 'davut@gmail.com', 'hoca321', 'lecturer', 2007, NULL);
+INSERT INTO `users` VALUES (5, 'Sistem Yöneticisi', 'admin@gmail.com', 'admin123', 'admin', NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

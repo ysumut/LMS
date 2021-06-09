@@ -4,19 +4,61 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="/views/admin/template.xhtml"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
     <ui:define name="content">
         <ui:param name="myadmin" value="#{adminBean.admin}" />
+        <div class="container">
+            <div class="row">
+                <div class="col-7">
+                    <h:form>
+                        <h:dataTable class="table table-dark table-striped mt-3" var="s" value="#{adminBean.students}">
+                            <h:column>
+                                <f:facet name="header">Ad Soyad</f:facet>
+                                    #{s.full_name}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">E-Mail</f:facet>
+                                    #{s.email}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Giriş Yılı</f:facet>
+                                    #{s.registration_year}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Sömestir</f:facet>
+                                    #{s.semester == 0 ? "" : s.semester}
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </div>
+                <div class="col-5">
+                    <div class="card text-white bg-dark mt-3 " style="max-width: 40rem;">
+                        <div class="card-header bg-transparent border-success text-center">Yeni Öğrenci Ekle</div>
+                        <div class="card-body text-dark">
+                            <h:form class="form_container">
+                                <h:outputText class="text-white" value="Adı Soyadı :"/>
+                                <h:inputText class="form-control mb-1" value="#{adminBean.student.full_name}" a:placeholder="Adı Soyadı"/>
 
-        <div class="mt-5">
-            <div class="card border-success">
-                <div class="card-body">
-                    <h5 class="card-title">Öğrenciler</h5>
+                                <h:outputText class="text-white" value="E-Mail :"/>
+                                <h:inputText class="form-control mb-1" value="#{adminBean.student.email}" a:placeholder="E-mail"/>
+
+                                <h:outputText class="text-white" value="Giriş Yılı :"/>
+                                <h:inputText class="form-control mb-1" value="#{adminBean.student.registration_year}" a:placeholder="Giriş Yılı"/>
+
+                                <h:outputText class="text-white" value="Sömestir :"/>
+                                <h:inputText class="form-control mb-1" value="#{adminBean.student.semester}" a:placeholder="Sömestir"/>
+
+                                <div class="text-center">
+                                    <h:commandButton class="btn btn-success mt-3" value="Kaydet" action="#{adminBean.saveStudent()}" />
+                                </div>
+                            </h:form>
+                        </div>
+                    </div> 
                 </div>
             </div>
         </div>
 
     </ui:define>
 </ui:composition>
-
