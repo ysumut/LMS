@@ -17,20 +17,17 @@
                 <div class="col-md-4 mx-auto m-5 text-center p-4 ">
 
                     <div class="card border-success mt-5" style="max-width: 40rem;">
-                        <div class="card-header bg-transparent border-success">Giriş Ekranı</div>
+                        <div class="card-header bg-transparent border-success font-italic">Giriş Ekranı</div>
                         <div class="card-body text-success">
                             <h:form class="form_container">
                                 <h:outputText value="E-mail: "/>
-                                <h:inputText class="form-control" value="#{UserBean.email}" a:placeholder="@iuc.edu.tr/@ogr.iuc.edu.tr"/>
+                                <h:inputText class="form-control mt-1" value="#{UserBean.email}" a:placeholder="@iuc.edu.tr/@ogr.iuc.edu.tr"/>
                                 <br/>
                                 <br/>
                                 <h:outputText value="Şifre "/>
-                                <h:inputSecret class="form-control" value="#{UserBean.password}" a:placeholder="Şifre"/>
+                                <h:inputSecret class="form-control mt-1" value="#{UserBean.password}" a:placeholder="Şifre"/>
                                 <h:commandButton class="btn btn-outline-success mt-3" value="Giriş Yap" action="#{UserBean.login()}"/>
                             </h:form>
-                        </div>
-                        <div class="card-footer bg-transparent border-success">
-                            <a href="#" style="color: #198754">Şifremi Unuttum</a>
                         </div>
                     </div> 
                 </div>

@@ -13,26 +13,18 @@
             <div class="row">
                 <div class="col-7">
                     <h:form>
-                        <h:dataTable class="table table-dark table-striped mt-3" var="st" value="#{adminBean.students}">
+                        <h:dataTable class="table table-dark table-striped mt-3" var="ad" value="#{adminBean.admins}">
                             <h:column>
                                 <f:facet name="header">Ad Soyad</f:facet>
-                                    #{st.full_name}
+                                    #{ad.full_name}
                             </h:column>
                             <h:column>
                                 <f:facet name="header">E-Mail</f:facet>
-                                    #{st.email}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Giriş Yılı</f:facet>
-                                    #{st.registration_year}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Sömestir</f:facet>
-                                    #{st.semester == 0 ? "" : st.semester}
+                                    #{ad.email}
                             </h:column>
                             <h:column>
                                 <f:facet name="header">İşlem</f:facet>
-                                <h:commandButton class="btn btn-danger btn-sm" action="#{adminBean.deleteUser(st.userId)}" value="Kaldır" />
+                                <h:commandButton class="btn btn-danger btn-sm" action="#{adminBean.deleteUser(ad.userId)}" value="Kaldır" />
                             </h:column>
                         </h:dataTable>
                     </h:form>
@@ -43,19 +35,13 @@
                         <div class="card-body text-dark">
                             <h:form class="form_container">
                                 <h:outputText class="text-white" value="Adı Soyadı :"/>
-                                <h:inputText class="form-control mb-1" value="#{adminBean.student.full_name}" a:placeholder="Adı Soyadı"/>
+                                <h:inputText class="form-control mb-1" value="#{adminBean.new_admin.full_name}" a:placeholder="Adı Soyadı"/>
 
                                 <h:outputText class="text-white" value="E-Mail :"/>
-                                <h:inputText class="form-control mb-1" value="#{adminBean.student.email}" a:placeholder="E-mail"/>
-
-                                <h:outputText class="text-white" value="Giriş Yılı :"/>
-                                <h:inputText class="form-control mb-1" value="#{adminBean.student.registration_year}" a:placeholder="Giriş Yılı"/>
-
-                                <h:outputText class="text-white" value="Sömestir :"/>
-                                <h:inputText class="form-control mb-1" value="#{adminBean.student.semester}" a:placeholder="Sömestir"/>
+                                <h:inputText class="form-control mb-1" value="#{adminBean.new_admin.email}" a:placeholder="E-mail"/>
 
                                 <div class="text-center">
-                                    <h:commandButton class="btn btn-success mt-3" value="Kaydet" action="#{adminBean.saveStudent()}" />
+                                    <h:commandButton class="btn btn-success mt-3" value="Kaydet" action="#{adminBean.saveAdmin()}" />
                                 </div>
                             </h:form>
                         </div>
