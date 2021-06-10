@@ -68,6 +68,10 @@ public class AdminBean implements Serializable {
         this.new_admin = new_admin;
     }
     
+    public List<String> getReporting() {
+        return this.model.getReporting();
+    }
+    
     private String generatePassword() {
         String ch = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         String password = "";

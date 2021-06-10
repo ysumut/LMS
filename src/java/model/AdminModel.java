@@ -22,6 +22,39 @@ import java.util.List;
 public class AdminModel {
     private final DBConnection db = new DBConnection();
     
+    public List<String> getReporting(){
+        List<String> list = new ArrayList<>();
+        try {
+            String SQL1 = "SELECT SUM(type = 'student') AS st_count, SUM(type = 'lecturer') AS lec_count, SUM(type = 'admin') AS ad_count FROM users";
+            Statement st = this.db.connect().createStatement();
+            ResultSet rs = st.executeQuery(SQL1);
+            if(rs.next()){
+                list.add(rs.getString("st_count"));
+                list.add(rs.getString("lec_count"));
+                list.add(rs.getString("ad_count"));
+            }
+            
+            String SQL2 = "SELECT COUNT(*) AS dep_count FROM departments";
+            Statement st2 = this.db.connect().createStatement();
+            ResultSet rs2 = st2.executeQuery(SQL2);
+            if(rs2.next()){
+                list.add(rs2.getString("dep_count"));
+            }
+            
+            String SQL3 = "SELECT COUNT(*) AS lesson_count FROM lessons";
+            Statement st3 = this.db.connect().createStatement();
+            ResultSet rs3 = st3.executeQuery(SQL3);
+            if(rs3.next()){
+                list.add(rs3.getString("lesson_count"));
+            }
+            
+            return list;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
     public List<Student> getStudents(){
         List<Student> list = new ArrayList<>();
         String sorgu = "SELECT * FROM users WHERE type ='student'";

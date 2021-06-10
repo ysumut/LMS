@@ -7,14 +7,60 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <ui:param name="myadmin" value="#{adminBean.admin}" />
+        <ui:param name="report" value="#{adminBean.reporting}" />
 
         <div class="mt-5">
             <div class="card border-success">
-                <div class="card-body">
-                    <h5 class="card-title">Admin Bilgileri</h5>
-                    <p class="card-text"><b>Bölüm: </b></p>
-                    <p class="card-text"><b>Giriş Yılı: </b></p>
+                <div class="card-body container">
+                    <h3 class="card-title text-center font-italic mb-5">Ana Sayfa</h3>
+
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="card text-white bg-secondary col-md-3 m-1">
+                            <div class="card-header font-italic">
+                                Bölüm
+                            </div>
+                            <div class="card-body">
+                                #{report[3]}
+                            </div>
+                        </div>
+                        <div class="card text-white bg-info col-md-3 m-1">
+                            <div class="card-header font-italic">
+                                Ders
+                            </div>
+                            <div class="card-body">
+                                #{report[4]}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1 mr-5"></div>
+                        <div class="card text-white bg-primary col-md-3 m-1">
+                            <div class="card-header font-italic">
+                                Öğrenci
+                            </div>
+                            <div class="card-body">
+                                #{report[0]}
+                            </div>
+                        </div>
+                        <div class="card text-white bg-danger col-md-3 m-1">
+                            <div class="card-header font-italic">
+                                Öğretim Görevlisi
+                            </div>
+                            <div class="card-body">
+                                #{report[1]}
+                            </div>
+                        </div>
+                        <div class="card text-white bg-dark col-md-3 m-1">
+                            <div class="card-header font-italic">
+                                Sistem Yöneticisi
+                            </div>
+                            <div class="card-body">
+                                #{report[2]}
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
